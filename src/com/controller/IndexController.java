@@ -1,25 +1,17 @@
 package com.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.mapper.CompetitionMapper;
+import com.model.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.model.Boss;
-import com.model.Catelog;
-import com.model.Job;
-import com.model.Offer;
-import com.model.Score;
-import com.model.Test;
-import com.model.User;
 import com.service.BossService;
 import com.service.CatelogService;
 import com.service.JobService;
@@ -50,7 +42,9 @@ public class IndexController {
 
 	@Autowired
 	private BossService bossService;
-	
+	@Autowired
+	private CompetitionMapper competitionMapper;
+
 
 	@RequestMapping("/def")
 	public String def( HttpServletRequest request) throws Exception {
@@ -69,18 +63,10 @@ public class IndexController {
 	@RequestMapping(value = "/index")
 	public String index(HttpServletRequest request) throws Exception {
 		// 纪录榜信息查询最新的
-		PageBean page = new PageBean(0);
-		page.setPageSize(7);
-		Job job = new Job();
-		List<Job> list = jobService.queryJobList(job, page);
-		request.setAttribute("list", list);
-		request.getSession().setAttribute("top_index", 1);
-		
-		Catelog catelog = new Catelog();
-		List<Catelog> catelogList = catelogService.queryCatelogList(catelog, null);
-		request.getSession().setAttribute("catelogList", catelogList);
+		Map<String, Object> inputParam=new HashMap<>();
+		List<Map> ccompetitionList = competitionMapper.query(inputParam);
+		request.getSession().setAttribute("ccompetitionList", ccompetitionList);
 		return "/web/index.jsp";
-
 	}
 
 	
