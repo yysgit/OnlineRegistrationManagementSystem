@@ -7,7 +7,8 @@
    /* height: 626px;**/
     height: 90%;
     position: relative;
-    background: url(../images/sem10/bottom-side.png) #12ADA9 repeat-x left bottom;
+    background: #5dd5c8 url(../images/newbg.png) center bottom no-repeat;
+
 }
 
 #page_login .box {
@@ -91,6 +92,8 @@
 	    width: 1200px;
 	    height: 100%;
 	    margin: 0 auto;
+        display: flex;
+        justify-content: center;
 	}
 	.main .theme {
 	    box-sizing: border-box;

@@ -56,34 +56,34 @@
 
 <div id="header">
 	<div class="home-inner">
-		<div class="logo">
-			<a href="<%=path%>/index.action" >
-			</a>
-		</div>
+<%--		<div class="logo">--%>
+<%--			<a href="<%=path%>/index.action" >--%>
+<%--			</a>--%>
+<%--		</div>--%>
 		<div class="nav">
 			<ul>
 				<li <c:if test="${top_index==1}">class="cur"</c:if> >
-					<a href="<%=path%>/index.action">首页</a>
+					<a href="<%=path%>/index.action">大赛入口</a>
 				</li>
-				<li <c:if test="${top_index==2}">class="cur"</c:if>>
-					<a href="<%=path%>/job_list_web.action">职位</a>
-				</li>
-				<li <c:if test="${top_index==3}">class="cur"</c:if>>
-					<a onclick="tiao(2)" >在线答题</a>
-				</li>
+<%--				<li <c:if test="${top_index==2}">class="cur"</c:if>>--%>
+<%--					<a href="<%=path%>/job_list_web.action">职位</a>--%>
+<%--				</li>--%>
+<%--				<li <c:if test="${top_index==3}">class="cur"</c:if>>--%>
+<%--					<a onclick="tiao(2)" >在线答题</a>--%>
+<%--				</li>--%>
 
 				<li <c:if test="${top_index==4}">class="cur"</c:if>>
 					<a href="<%=path%>/gonggao_list_web.action">资讯</a>
 				</li>
-				<!--
-				<li <c:if test="${top_index==5}">class="cur"</c:if>>
-					<a class="nav-find" 
-						href="<%=path%>/company_toView.action">企业概况</a>
-				</li>
-				-->
-				<li <c:if test="${top_index==6}">class="cur"</c:if>>
-					<a onclick="tiao(3)" >面试评价</a>
-				</li>
+
+<%--				<li <c:if test="${top_index==5}">class="cur"</c:if>>--%>
+<%--					<a class="nav-find"--%>
+<%--						href="<%=path%>/company_toView.action">企业概况</a>--%>
+<%--				</li>--%>
+
+<%--				<li <c:if test="${top_index==6}">class="cur"</c:if>>--%>
+<%--					<a onclick="tiao(3)" >面试评价</a>--%>
+<%--				</li>--%>
 			</ul>
 		</div>
 		<div class="user-nav">

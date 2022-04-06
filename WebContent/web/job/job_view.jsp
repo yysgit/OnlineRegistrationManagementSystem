@@ -54,26 +54,26 @@
 				<div class="inner home-inner" >
 					<div class="job-primary detail-box" >
 						<div class="info-primary">
-	                        <div class="job-status"><span>招聘中</span></div>
+	                        <div class="job-status"><span>火热报名中...</span></div>
 	                        <div class="name">
-	                            <h1>${job.name}</h1>
-	                            <span class="salary">${job.minsalary}-${job.maxsalary}元</span>
+	                            <h1>五子棋</h1>
+	                            <span class="salary"></span>
 	                        </div>
-	                            <p><a class="text-city" href="/xian/">${job.quyu}</a><em class="dolt"></em>${job.jingyan}<em class="dolt"></em>${job.xueli}</p>
-	                            <div class="tag-container">
-	                                
-	                                <div class="job-tags">
-	                                    <c:forEach items="${job.fuliArray}" var="tag" varStatus="var">	
-											<span>${tag}</span>
-										</c:forEach>
-	                                </div>
-	                            </div>
+<%--	                            <p><a class="text-city" href="/xian/">${job.quyu}</a><em class="dolt"></em>${job.jingyan}<em class="dolt"></em>${job.xueli}</p>--%>
+<%--	                            <div class="tag-container">--%>
+<%--	                                --%>
+<%--	                                <div class="job-tags">--%>
+<%--	                                    <c:forEach items="${job.fuliArray}" var="tag" varStatus="var">	--%>
+<%--											<span>${tag}</span>--%>
+<%--										</c:forEach>--%>
+<%--	                                </div>--%>
+<%--	                            </div>--%>
 	                    </div>
-	                    <div class="job-op">
+	                    <div class="job-op" style="margin-top: -20px;">
 	                    	<c:if test="${is_offer!=1}">
 	                    	<div class="btn-container">
                             	<!-- 未登录 -->	
-	                     		<a class="btn btn-startchat" onclick="toToudi(${job.id})" >投递简历</a>
+	                     		<a class="btn btn-startchat" onclick="toToudi(${job.id})" >去报名</a>
 	                        </div>
 	                        </c:if>
 	                    </div>
@@ -84,24 +84,24 @@
 				<div class="inner home-inner">
 					<div class="job-sider">
 						<div class="promotion-img">
-	                        <a ><img src="<%=path%>/web/images/pro-1.png" ></a>
+	                        <a ><img src="https://img1.baidu.com/it/u=89147825,2037667010&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" ></a>
 	                    </div>
 					
 					</div>
 					<div class="job-detail">
 						<div class="detail-content">
 							<div class="job-sec">
-	                            <h3>职位描述</h3>
+	                            <h3>五子棋</h3>
 	                            <div class="text">
-	                                ${job.miaoshu}
+									五子棋是全国智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏。双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成五子连珠者获胜。
 	                            </div>
 	                        </div>
 						</div>
 						<div class="detail-content">
 							<div class="job-sec">
-	                            <h3>工作地址</h3>
+	                            <h3>比赛要求</h3>
 	                            <div class="text">
-	                                ${job.address}
+									比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求
 	                            </div>
 	                        </div>
 						</div>
@@ -109,6 +109,12 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+
 		<jsp:include page="../page/foot.jsp" />
 	</body>
 </html>

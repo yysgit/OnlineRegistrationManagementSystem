@@ -32,7 +32,15 @@
 		<script src="<%=path%>/css/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/jquery-pdm.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/layer/layer.js"></script>
-		
+		<style>
+			.sign-form .form-row .ipt-select{
+				width: 100%;
+				height: 42px;
+				outline: none;
+				padding-left: 38px;
+			}
+
+		</style>
 	</head>
 	<body id="page_login">
 		<jsp:include page="page/head.jsp" />
@@ -47,7 +55,7 @@
 						<!--注册-->
 						<div class="sign-form sign-register" style="display: block;">
 							<h3 class="title">
-								网上求职招聘登录
+								计算机博弈锦标赛登录
 							</h3>
 							<div id="alert-error" class="tip-error"></div>
 							<form id="loginForm"
@@ -67,7 +75,20 @@
 											placeholder="密码" id="upwd" id="upwd"> 
 									</span>
 									
-								</div><!--
+								</div>
+								<div class="form-row">
+									<span class="ipt-wrap">
+										<i class="icon-sign-phone"></i>
+										<select class="ipt ipt-select">
+										  <option>全国大学生计算机博弈大赛</option>
+										  <option>全国计算机博弈锦标赛</option>
+										</select>
+									</span>
+
+								</div>
+
+
+								<!--
 
 								<div class="form-row">
 									<span class="ipt-wrap"> 
@@ -81,7 +102,8 @@
 										</button> </span>
 								</div>
 								
-								--><div class="form-row">
+								-->
+								<div class="form-row">
 									<span class="ipt-wrap"> 
 										<i class="icon-sign-sms"></i> 
 										<input id="vcode" type="text" class="ipt ipt-sms required" 
@@ -112,15 +134,14 @@
 
 
 				<!-- 主题背景-pc -->
-				<div class="theme">
-					<div class="title">
-						海量优质人才，在线约面
-					</div>
-					<div class="desc">
-						找人才就上企业直聘
-					</div>
-					<img src="<%=path%>/web/images/banner.png" >
-				</div>
+<%--				<div class="theme">--%>
+<%--					<div class="title">--%>
+<%--						海量优质人才，在线约面--%>
+<%--					</div>--%>
+<%--					<div class="desc">--%>
+<%--						找人才就上企业直聘--%>
+<%--					</div>--%>
+<%--				</div>--%>
 
 
 

@@ -36,6 +36,208 @@
 			    display: inline-block;
 			
 			}
+			.game_list_wrap{
+				margin-bottom: 300px;
+			}
+
+			.listboxwp {
+				width: 740px;
+				padding: 27px 0;
+				border-bottom: 1px solid #e7e7e7;
+				font-size: 14px;
+				color: #929291;
+				position: relative;
+				margin:0 auto;
+			}
+
+			.listboxwp .imgwp {
+				width: 179px;
+				height: 108px;
+				float: left;
+				margin: 6px 24px 20px 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.listboxwp .imgwp a {
+				display: block;
+			}
+
+			.listboxwp .imgwp img {
+				width: 100%;
+				height: 108px;
+			}
+
+			.listboxwp .imgwp:hover img {
+				-webkit-transform: scale(1.06);
+				transform: scale(1.06);
+			}
+
+			.listboxwp h3 {
+				font-size: 18px;
+				height: 18px;
+				margin-bottom: 20px;
+				line-height: 24px;
+				height: 24px;
+				margin-bottom: 14px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-weight: bold;
+			}
+			.listboxwp h3 a:hover {
+				color: #ff6600;
+			}
+			.listboxwp h3 .obvioussina {
+				margin-left: 14px;
+			}
+
+			.listboxwp h3 a.org {
+				font-size: 14px;
+				font-weight: normal;
+			}
+
+			.listboxwp .conwp {
+				overflow: hidden;
+				margin-bottom: 17px;
+			}
+
+			.listboxwp i {
+				font: 8px "SimSun", "宋体";
+				padding: 0 12px;
+				color: #c6c6c6;
+			}
+
+			.listboxwp p {
+				line-height: 26px;
+				margin-bottom: 17px;
+				color: #666565;
+				max-height: 52px;
+				margin: 0 0 15px 0;
+				overflow: hidden;
+			}
+
+			.listboxwp .time {
+				padding: 0 55px 0 5px;
+			}
+
+			.listboxwp .from {
+				padding: 0 50px 0 13px;
+			}
+
+			.listboxwp span.share {
+				margin: 0 8px;
+			}
+
+			.listboxwp a.share {
+				margin: 0 8px;
+			}
+
+			.listboxwp>a.gray {
+				margin-right: 6px;
+			}
+
+			.listboxwp span.gray {
+				font-size: 14px;
+				color: #929291;
+				vertical-align: -2px;
+				font-weight: normal;
+			}
+
+			.listboxwp .conimgwp {
+				height: 108px;
+				margin-bottom: 17px;
+				padding-top: 6px;
+				overflow: hidden;
+			}
+
+			.listboxwp .conimgwp a {
+				margin-right: 5px;
+				overflow: hidden;
+				float: left;
+			}
+
+			.listboxwp .conimgwp img {
+				height: 100%;
+				transition: all 1s;
+			}
+
+			.listboxwp .conimgwp a img:hover {
+				transform: scale(1.1);
+			}
+
+			.listboxwp .bigitem {
+				height: 219px;
+				overflow: hidden;
+				margin-bottom: 17px;
+			}
+
+			.listboxwp .bigitem p {
+				margin-bottom: 13px;
+			}
+
+			.listboxwp .bigimgwp {
+				width: 267px;
+				height: 210px;
+				float: left;
+				margin: 6px 24px 20px 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.listboxwp .bigimgwp img {
+				width: 100%;
+				height: 100%;
+			}
+
+			.listboxwp .bigimgwp:hover img {
+				transform: scale(1.06);
+			}
+
+			.listboxwp .bigitem ul {
+				padding-top: 13px;
+			}
+
+			.listboxwp .bigitem ul li {
+				float: left;
+				margin-right: 10px;
+				text-align: center;
+				color: #929291;
+			}
+
+			.listboxwp .bigitem ul li .smallimg {
+				display: block;
+				width: 111px;
+				height: 70px;
+				overflow: hidden;
+				margin-bottom: 6px;
+			}
+
+			.listboxwp .bigitem ul li img {
+				width: 111px;
+				height: 70px;
+				display: block;
+				transition: all 1s;
+			}
+
+			.listboxwp .bigitem ul li a:hover img {
+				transform: scale(1.1);
+			}
+
+			.listboxwp .bigitem ul li a.gray {
+				color: #666565;
+			}
+
+			.listboxwp .bigitem ul li a.gray:hover {
+				color: #ff6600;
+			}
+			.all-list-name{
+				padding-top: 70px;
+				font-size: 45px;
+				line-height: 1.08349;
+				font-weight: 600;
+				text-align: center;
+			}
 		</style>
 		
 		<script language=JavaScript>
@@ -59,196 +261,50 @@
 	</head>
 	<body>
 		<jsp:include page="../page/head.jsp" />
-		<form action="<%=path%>/job_list_web.action" name="formAdd" method="post">
-		
-		<input type="hidden" id="catelogid" name="catelogid" value="${catelogid}" />
-		<input type="hidden" id="xinzIndex" name="xinzIndex" value="${zjindex}" />
-		<input type="hidden" id="xueli" name="xueli" value="${xueli}" />	
-		<div class="search__area">
-			<div style="width: 1000px; margin: 0 auto;">
-				<a>首页 </a> &gt;
-				<a>招聘列表</a>
-			</div>
-			<div class="search w1150" id="search">
-				
-				<div class="search__wrap" style="position: relative;">
-					<input class="search__input fl" type="text" name="name"
-						placeholder="请输入招聘岗位" value="${name}" >
-					
-					<button class="btn btn-search fl" style="font-size:14px" type="">
-						搜索
-					</button>
-				</div>
-	
-			</div>
+
+
+		<div class="content w1150" id="content">
+			<h3 class="all-list-name">
+				全国大学生计算机博弈大赛
+			</h3>
 		</div>
-		</form>
-	
 
-	<div class="filter">
-		<div class="filter__wrapper w1150" id="filter">
-
-
-			<ul data-target="station">
-			</ul>
-
-			<ul class="filter__ul" data-el="rentType">
-				<li class="filter__item--level4 filter__item--aside">
-					<a href="javascript:;">职位</a>
-				</li>
-				<li  <c:if test="${catelogid==null||catelogid==''}">class="filter__item--level4 strong"</c:if >   
-					 <c:if test="${catelogid!=null&&catelogid!=''}">class="filter__item--level4 "</c:if > >
-					 <a onclick="serlist('',1)" rel="nofollow">不限</a>
-				</li>
-				<c:forEach items="${catelogList}" var="catelog" varStatus="status">
-				<li <c:if test="${catelogid==catelog.id}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${catelogid!=catelog.id}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('${catelog.id}',1)">${catelog.name}</a>
-				</li>
-				</c:forEach>
-				
-				
-				
-			</ul>
-			
-			<ul class="filter__ul">
-				<li class="filter__item--level5 filter__item--aside">
-					<a href="javascript:;">学历</a>
-				</li>
-				<li <c:if test="${xueli==null||xueli==''}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xueli!=null&&xueli!=''}">class="filter__item--level5 check  "</c:if > >
-					<a onclick="serlist('',4)"
-						rel="nofollow">不限</a>
-				</li>
-				
-				<li <c:if test="${xueli=='初中及以下'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='初中及以下'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('初中及以下',4)">初中及以下</a>
-				</li>
-				<li <c:if test="${xueli=='高中'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='高中'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('高中',4)">高中</a>
-				</li>
-				<li <c:if test="${xueli=='大专'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='大专'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('大专',4)">大专</a>
-				</li>
-				<li <c:if test="${xueli=='本科'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='本科'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('本科',4)">本科</a>
-				</li>
-				<li <c:if test="${xueli=='硕士'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='硕士'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('硕士',4)">硕士</a>
-				</li>
-				<li <c:if test="${xueli=='博士'}">class="filter__item--level5 strong"</c:if >
-					<c:if test="${xueli!='博士'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('博士',4)">博士</a>
-				</li>
-				
-				
-				
-			</ul>
-
-
-			<ul class="filter__ul" data-el="filterPrice">
-				<li class="filter__item--level5 filter__item--aside">
-					<a href="javascript:;">薪资</a>
-				</li>
-				<li <c:if test="${xinzIndex==null||xinzIndex==''}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!=null&&xinzIndex!=''}">class="filter__item--level5 check  "</c:if > >
-					<a onclick="serlist('',2)" rel="nofollow">不限</a>
-				</li>
-				<li <c:if test="${xinzIndex=='1'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='1'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('1',2)" >1000以下</a>
-				</li>
-				<li <c:if test="${xinzIndex=='2'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='2'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('2',2)">1000-2000</a>
-				</li>
-				<li <c:if test="${xinzIndex=='3'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='3'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('3',2)">2000-4000</a>
-				</li>
-				<li <c:if test="${xinzIndex=='4'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='4'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('4',2)">4000-8000</a>
-				</li>
-				<li <c:if test="${xinzIndex=='5'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='5'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('5',2)">8000-12000</a>
-				</li>
-				<li <c:if test="${xinzIndex=='6'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='6'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('6',2)">12000-20000</a>
-				</li>
-				<li <c:if test="${xinzIndex=='7'}">class="filter__item--level5 strong"</c:if >   
-					<c:if test="${xinzIndex!='7'}">class="filter__item--level5 check  "</c:if >>
-					<a onclick="serlist('7',2)">20000以上</a>
-				</li>
-			
-				
-			
-			</ul>
-			
-			
-
-			
-
-		</div>
-			
-	</div>
-	
-	<div class="content w1150" id="content">
-		<div class="content__article">
-		
-
-			<ul class="content__filter" id="contentList">
-				<li class="content__filter--selected">
-					<a href=""
-						data-event_id="10797" data-event_action="target=综合排序">综合排序</a>
-				</li>
-				
-				
-			</ul>
-			
-			<div class="content__list">
-			
-				<c:forEach items="${list}" var="job" varStatus="status">	
-				<div class="content__list--item" style="border-bottom: 1px solid #eee;height: 142px;margin-top: 20px;">
-					
-					<div class="content__list--item--main" style="margin-left:0">
-						<p class="content__list--item--title twoline">
-							<a href="<%=path%>/job_toView_web.action?id=${job.id}">
-								${job.name} </a>
-						</p>
-						<p class="content__list--item--des" style="margin-top:15px">
-							<a >${job.quyu}</a>
-							<i>|</i> ${job.jingyan}
-							<i>|</i> ${job.xueli}
-							
-						</p>
-						
-						<p class="content__list--item--time oneline" style="position: absolute; top: 10px;right: 0;color:#000;   font-size: 18px;font-weight: 700;">
-							${job.address}
-						</p>
-						<p class="content__list--item--bottom oneline" style="bottom: 40px;left: 0;">
-							<c:forEach items="${job.fuliArray}" var="tag" varStatus="var">	
-							<i>${tag}</i>
-							</c:forEach>
-						</p>
-						<span class="content__list--item-price"><em>${job.minsalary}-${job.maxsalary}</em>
-							元</span>
+		<div class="game_list_wrap">
+			<div class="listboxwp">
+				<div class="conwp">
+					<div class="imgwp">
+						<a href="<%=path%>/job_toView_web.action?id=1"  target="_blank" title="五子棋">
+							<img class="trans" src="https://img1.baidu.com/it/u=89147825,2037667010&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" alt="五子棋" style="opacity: 1;">
+						</a>
 					</div>
+					<h3>
+						<a  target="_blank" title="五子棋">五子棋</a><span class="hvideo"></span>
+					</h3>
+					<p>五子棋是全国智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏。双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成五子连珠者获胜。</p>
+					2022-04-02
+					<span class="time">14:05:45</span><span class="from">来自：
+					<a  target="_blank" class="gray">全国大学生计算机博弈大赛</a></span>
 				</div>
-				</c:forEach>
-				
+			</div>
+			<div class="listboxwp">
+				<div class="conwp">
+					<div class="imgwp">
+						<a a href="<%=path%>/job_toView_web.action?id=2"  target="_blank" title="六子棋">
+							<img class="trans" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F16218285-412c44c5b8751918.jpg&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651720418&t=047bc20410f515faa028bccaa5ba2012" alt="六子棋" style="opacity: 1;">
+						</a>
+					</div>
+					<h3>
+						<a  target="_blank" title="六子棋">六子棋</a><span class="hvideo"></span>
+					</h3>
+					<p>六子棋的走法。六子棋是流传于中国民间的一类版图游戏。是一种双人对弈搏杀的一种游戏，交战双方棋子数均为六颗，故称六子棋。六子棋的棋盘为3乘以3的方格。棋子可信手拿来，只要互相区分即可。 六子棋，又名连六棋，为改良自五子棋一般规则及连珠棋规中“先手必胜”之不合理情况及国际棋规中之繁复规则。</p>
+					2022-04-02
+					<span class="time">14:05:45</span><span class="from">来自：
+					<a  target="_blank" class="gray">全国大学生计算机博弈大赛</a></span>
+				</div>
 			</div>
 		</div>
-	</div>
-			
-	
+
+
 	<jsp:include page="../page/foot.jsp" />
 	</body>
 </html>
