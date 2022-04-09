@@ -21,13 +21,14 @@
 		insert into db_competition
 		(name,			hold_time,hold_address,type,content)
 		values
-		(#{holdTime},#{holdAddress},#{type},#{content},);
+		(#{name},#{holdTime},#{holdAddress},#{type},#{content});
 	</insert>
 	<update id="updateCompetition" parameterType="Competition">
 		update db_competition set
 								  hold_time=#{holdTime},
 		                          hold_address=#{holdAddress},
 								  type=#{type},
+								  name=#{name},
 		                          content=#{content}
 		where
 		id=#{id}	

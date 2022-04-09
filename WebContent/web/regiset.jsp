@@ -153,8 +153,20 @@
 											name="birthday" id="birthday" maxlength="20" placeholder="请输入出生日期">
 									</div>
 								</div>
-	
-								
+
+								<div class="calculatorItem">
+									<label class="itemTitle" >
+										注册类型：
+									</label>
+									<div class="u-select">
+										<select  class="reg_select"
+											   name="type"  id="type" >
+											<option value="0">学生</option>
+											<option value="1">社会人士</option>
+										</select>
+									</div>
+								</div>
+
 								<div class="calculatorBtn" ><button type="submit" >立即注册</button></div>
 							</div>
 						</form>

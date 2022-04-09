@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script language=JavaScript>
 	function logout() {
-		if (confirm("您确定要退出 网上求职招聘平台吗？")) {
+		if (confirm("您确定要退出 网上报名系统平台吗？")) {
 			top.location = "<%=path%>/user_loginout.action";
 			return true;
 		}
@@ -73,7 +73,7 @@
 <%--				</li>--%>
 
 				<li <c:if test="${top_index==4}">class="cur"</c:if>>
-					<a href="<%=path%>/gonggao_list_web.action">资讯</a>
+<%--					<a href="<%=path%>/gonggao_list_web.action">资讯</a>--%>
 				</li>
 
 <%--				<li <c:if test="${top_index==5}">class="cur"</c:if>>--%>
@@ -99,18 +99,18 @@
 			</c:if>
 			<c:if test="${sessionScope.user.name!=null}">
 			<ul >
-				 <li class=""><a ka="header-resume" href="<%=path%>/web/user/user_info.jsp">我的简历</a></li>
+				 <li class=""><a ka="header-resume" href="<%=path%>/web/user/user_info.jsp">我的信息</a></li>
                  <li class="nav-figure">
                     <a  >
                         <span class="label-text">${sessionScope.user.name}</span>
                         <img <c:if test="${sessionScope.user.photo==null||sessionScope.user.photo==''}">src="<%=path%>/web/images/default_user.png"</c:if> 
-							<c:if test="${sessionScope.user.photo!=null||sessionScope.user.photo!=''}">src="<%=path%>/${sessionScope.user.photo}"</c:if> alt="" />
+							<c:if test="${sessionScope.user.photo!=null||sessionScope.user.photo!=''}">src="<%=path%>${sessionScope.user.photo}"</c:if> alt="" />
                     </a>
                     <div class="dropdown" style="display: none;">
-                        <a href="<%=path%>/user_toUpdate_web.action" >制作简历<span>编辑在线简历</span></a>
-                        <a href="<%=path%>/web/user/user_upwd.jsp" >账号设置<span>修改密码</span></a>
-                        
-                        <a href="<%=path%>/my_offers.action" class="link-mall">offer通知</a>
+<%--                        <a href="<%=path%>/user_toUpdate_web.action" >制作简历<span>编辑在线简历</span></a>--%>
+<%--                        <a href="<%=path%>/web/user/user_upwd.jsp" >账号设置<span>修改密码</span></a>--%>
+<%--                        --%>
+<%--                        <a href="<%=path%>/my_offers.action" class="link-mall">offer通知</a>--%>
                         
                         <a onclick="logout();" class="link-logout" >退出登录</a>
                        

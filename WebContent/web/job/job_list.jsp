@@ -6,15 +6,13 @@
 	String path = request.getContextPath();
 %>
 
-
-<!-- saved from url=(0030)https://xa.lianjia.com/zufang/ -->
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-language" content="zh-CN">
 
-		<title>企业招聘</title>
+		<title>大赛项目</title>
 		<link href="<%=path%>/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 		
 		<link rel="stylesheet" href="<%=path%>/web/css1/common.css" />
@@ -26,16 +24,6 @@
 		<link rel="stylesheet" href="<%=path%>/web/css/index.css" />
 		<script src="<%=path%>/js/jquery-3.4.1.min.js"></script>
 		<style type="text/css">
-			.sold{
-				background: url(./images/sprite_user.png) no-repeat -54px -64px;
-			    width: 59px;
-			    height: 59px;
-			    position: absolute;
-			    top: 0;
-			    right: 0;
-			    display: inline-block;
-			
-			}
 			.game_list_wrap{
 				margin-bottom: 300px;
 			}
@@ -265,43 +253,31 @@
 
 		<div class="content w1150" id="content">
 			<h3 class="all-list-name">
-				全国大学生计算机博弈大赛
+				${sessionScope.projectList[0].competitionName}
 			</h3>
 		</div>
 
 		<div class="game_list_wrap">
+
+
+			<c:forEach items="${sessionScope.projectList}" var="project" varStatus="var">
 			<div class="listboxwp">
 				<div class="conwp">
 					<div class="imgwp">
-						<a href="<%=path%>/job_toView_web.action?id=1"  target="_blank" title="五子棋">
-							<img class="trans" src="https://img1.baidu.com/it/u=89147825,2037667010&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" alt="五子棋" style="opacity: 1;">
+						<a href="<%=path%>/job_toView_web.action?id=${project.id}"  target="_blank" title="${project.name}">
+							<img class="trans" src="${project.url}" alt="${project.name}" style="opacity: 1;">
 						</a>
 					</div>
 					<h3>
-						<a  target="_blank" title="五子棋">五子棋</a><span class="hvideo"></span>
+						<a  target="_blank" title="${project.name}">${project.name}</a><span class="hvideo"></span>
 					</h3>
-					<p>五子棋是全国智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏。双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成五子连珠者获胜。</p>
-					2022-04-02
-					<span class="time">14:05:45</span><span class="from">来自：
-					<a  target="_blank" class="gray">全国大学生计算机博弈大赛</a></span>
+					<p>${project.content}</p>
+						${project.name}
+					<span class="from">来自：
+					<a  target="_blank" class="gray">${project.competitionName}</a></span>
 				</div>
 			</div>
-			<div class="listboxwp">
-				<div class="conwp">
-					<div class="imgwp">
-						<a a href="<%=path%>/job_toView_web.action?id=2"  target="_blank" title="六子棋">
-							<img class="trans" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F16218285-412c44c5b8751918.jpg&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651720418&t=047bc20410f515faa028bccaa5ba2012" alt="六子棋" style="opacity: 1;">
-						</a>
-					</div>
-					<h3>
-						<a  target="_blank" title="六子棋">六子棋</a><span class="hvideo"></span>
-					</h3>
-					<p>六子棋的走法。六子棋是流传于中国民间的一类版图游戏。是一种双人对弈搏杀的一种游戏，交战双方棋子数均为六颗，故称六子棋。六子棋的棋盘为3乘以3的方格。棋子可信手拿来，只要互相区分即可。 六子棋，又名连六棋，为改良自五子棋一般规则及连珠棋规中“先手必胜”之不合理情况及国际棋规中之繁复规则。</p>
-					2022-04-02
-					<span class="time">14:05:45</span><span class="from">来自：
-					<a  target="_blank" class="gray">全国大学生计算机博弈大赛</a></span>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 

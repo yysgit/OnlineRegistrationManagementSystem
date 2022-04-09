@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 招聘者Service实现类
+ * 大赛Service实现类
  */
 @Service
 public class CompetitionServiceImpl implements CompetitionService {
@@ -22,7 +22,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	private CompetitionMapper competitionMapper;
 
 	/**
-	 * 查询招聘者记录数
+	 * 查询大赛记录数
 	 * 
 	 * @param competition
 	 * @return
@@ -33,7 +33,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	/**
-	 * 查询所有招聘者
+	 * 查询所有大赛
 	 * 
 	 * @return
 	 */
@@ -59,7 +59,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	/**
-	 * 保存招聘者
+	 * 保存大赛
 	 * 
 	 * @param competition
 	 * @return
@@ -69,7 +69,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	/**
-	 * 删除招聘者
+	 * 删除大赛
 	 * 
 	 * @param id
 	 * @return
@@ -79,7 +79,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 	}
 
 	/**
-	 * 更新招聘者
+	 * 更新大赛
 	 * 
 	 * @param competition
 	 * @return

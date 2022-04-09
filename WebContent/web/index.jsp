@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-language" content="zh-CN">
-    <title>网上求职招聘</title>
+    <title>网上报名系统</title>
     <link href="<%=path%>/favicon.ico" type="image/x-icon"
           rel="shortcut icon"/>
     <link rel="stylesheet" href="<%=path%>/web/css/main.css"/>
@@ -139,61 +139,17 @@
 </head>
 <body class="home-body city-site">
 <div id="wrap">
-    <!-- header begin -->
+
     <jsp:include page="page/head.jsp"/>
-    <!-- header end -->
-    <%--			<div class="fast-register-box top-sign-box">--%>
-    <%--				<div class="inner home-inner">--%>
-    <%--					<img--%>
-    <%--						src="<%=path%>/web/images/fast-reg.png"--%>
-    <%--						class="icon-tip"/>--%>
-    <%--					<div class="step-form">--%>
-    <%--                        <img src="<%=path%>/web/images/fast-reg-text.png">--%>
-    <%--                        <a href="<%=path%>/user_toUpdate_web.action" class="btn btn-dialog-upload btn-to-upload" >制作11你的简历</a>--%>
-    <%--                	</div>--%>
-    <%--				</div>--%>
-    <%--			</div>--%>
-    <%--			<div class="column-search-panel">--%>
-    <%--				<div class="inner home-inner">--%>
-    <%--					<div class="search-box">--%>
-    <%--						<div class="search-form ">--%>
-    <%--							<form action="<%=path%>/job_list_web.action" method="post" class="">--%>
-
-    <%--								<div class="search-form-con">--%>
-    <%--									<p class="ipt-wrap">--%>
-    <%--										<input type="text" name="name" class="ipt-search"--%>
-    <%--											maxlength="50" autocomplete="off" placeholder="搜索职位" />--%>
-    <%--									</p>--%>
-    <%--								</div>--%>
-
-    <%--								<button class="btn btn-search" type="submit">--%>
-    <%--									搜索--%>
-    <%--								</button>--%>
-
-    <%--							</form>--%>
-    <%--						</div>--%>
-    <%--						<div class="search-hot">--%>
-    <%--							<b>热门职位:</b>--%>
-    <%--							<a href="<%=path%>/job_list_web.action?catelogid=14"><b>JAVA开发</b></a>--%>
-    <%--							<a href="<%=path%>/job_list_web.action?catelogid=13">UI设计师</a>--%>
-
-    <%--						</div>--%>
-    <%--					</div>--%>
-    <%--				</div>--%>
-    <%--			</div>--%>
-
-
     <ul class="text">
         <c:forEach items="${sessionScope.catelogList}" var="info" varStatus="var">
             <li>
                 <a href="<%=path%>/job_list_web.action?catelogid=${info.id}">${info.name}</a>
             </li>
         </c:forEach>
-
-
     </ul>
 
-    <c:forEach items="${sessionScope.ccompetitionList}" var="info" varStatus="var">
+    <c:forEach items="${sessionScope.competitionList}" var="info" varStatus="var">
         <div class="game-wrap">
             <div class="game-cont">
                 <div class="game-msg-cont">
@@ -209,20 +165,6 @@
             </div>
         </div>
     </c:forEach>
-    <div class="game-wrap">
-        <div class="game-cont">
-            <div class="game-msg-cont">
-                <h2 class="headline">全国计算机博弈锦标赛</h2>
-                <h3 class="subhead" role="presentation"></h3>
-
-                <div class="game-links">
-                    <a class="btn btn-outline" href="<%=path%>/job_list_web.action">进一步了解</a>
-                    <a class="icon more icon-chevronright" href="javascript:;" target="_self" rel="follow">报名</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </div>
 
 

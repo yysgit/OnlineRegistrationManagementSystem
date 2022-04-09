@@ -5,5 +5,7 @@ String path = request.getContextPath();
 %>	
 <!--页面底部  开始-->
 <div class="footer">
-	<p> <a href="<%=path%>/admin/login.jsp">后台管理</a>&nbsp;&nbsp;|&nbsp;&nbsp; 感谢使用网上求职招聘</p>
+	<p>
+<%--		<a href="<%=path%>/admin/login.jsp">后台管理</a>--%>
+		&nbsp;&nbsp;|&nbsp;&nbsp; 感谢使用大赛报名系统</p>
 </div>

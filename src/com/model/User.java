@@ -43,52 +43,19 @@ public class User {
 	 * 照片
 	 */
 	private String photo;
-	/**
-	 * 学历
-	 */
-	private String xueli;
-	/**
-	 * 期望职位
-	 */
-	private Integer catelogid;
-	/**
-	 * 薪资要求
-	 */
-	private String xinzi;
-	/**
-	 * 工作经验
-	 */
-	private String gzjy;
-	/**
-	 * 工作经历
-	 */
-	private String gzjl;
-	/**
-	 * 毕业学校
-	 */
-	private String school;
-	/**
-	 * 专业
-	 */
-	private String zhuanye;
-	/**
-	 * 在校时间
-	 */
-	private String sdate;
-	/**
-	 * 求职状态
-	 */
-	private String zt;
-	/**
-	 * 个人优势
-	 */
-	private String youdian;
+
 	
 	/**
-	 * 简历是否完善
+	 * 删除状态
 	 */
 	private Integer state;
-	private Catelog catelogVO;
+
+	/**
+	 * 注册类型
+	 */
+	private Integer type;
+
+
 
 	public Integer getId() {
 		return this.id;
@@ -162,85 +129,7 @@ public class User {
 		this.photo = photo;
 	}
 
-	public String getXueli() {
-		return this.xueli;
-	}
 
-	public void setXueli(String xueli) {
-		this.xueli = xueli;
-	}
-
-	public Integer getCatelogid() {
-		return this.catelogid;
-	}
-
-	public void setCatelogid(Integer catelogid) {
-		this.catelogid = catelogid;
-	}
-
-	public String getXinzi() {
-		return this.xinzi;
-	}
-
-	public void setXinzi(String xinzi) {
-		this.xinzi = xinzi;
-	}
-
-	public String getGzjy() {
-		return this.gzjy;
-	}
-
-	public void setGzjy(String gzjy) {
-		this.gzjy = gzjy;
-	}
-
-	public String getSchool() {
-		return this.school;
-	}
-
-	public void setSchool(String school) {
-		this.school = school;
-	}
-
-	public String getZhuanye() {
-		return this.zhuanye;
-	}
-
-	public void setZhuanye(String zhuanye) {
-		this.zhuanye = zhuanye;
-	}
-
-	public String getSdate() {
-		return this.sdate;
-	}
-
-	public void setSdate(String sdate) {
-		this.sdate = sdate;
-	}
-
-	public String getZt() {
-		return this.zt;
-	}
-
-	public void setZt(String zt) {
-		this.zt = zt;
-	}
-
-	public String getYoudian() {
-		return this.youdian;
-	}
-
-	public void setYoudian(String youdian) {
-		this.youdian = youdian;
-	}
-
-	public Catelog getCatelogVO() {
-		return this.catelogVO;
-	}
-
-	public void setCatelogVO(Catelog catelogVO) {
-		this.catelogVO = catelogVO;
-	}
 
 	public Integer getState() {
 		return state;
@@ -250,13 +139,11 @@ public class User {
 		this.state = state;
 	}
 
-	public String getGzjl() {
-		return gzjl;
+	public Integer getType() {
+		return type;
 	}
 
-	public void setGzjl(String gzjl) {
-		this.gzjl = gzjl;
+	public void setType(Integer type) {
+		this.type = type;
 	}
-	
-	
 }

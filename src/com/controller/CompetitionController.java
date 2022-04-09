@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * 招聘者Controller业务控制类
+ * 大赛Controller业务控制类
  */
 @Controller
 public class CompetitionController {
@@ -23,7 +23,7 @@ public class CompetitionController {
 	private CompetitionService competitionService;
 
 	/**
-	 * 招聘者列表
+	 * 大赛列表
 	 * 
 	 * @param request
 	 * @return
@@ -57,7 +57,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 跳转到新增招聘者界面
+	 * 跳转到新增大赛界面
 	 * 
 	 * @param request
 	 * @return
@@ -69,7 +69,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 保存新增招聘者
+	 * 保存新增大赛
 	 * 
 	 * @param competition
 	 * @param request
@@ -84,7 +84,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 跳转到更新招聘者界面
+	 * 跳转到更新大赛界面
 	 * 
 	 * @param request
 	 * @return
@@ -100,7 +100,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 更新招聘者
+	 * 更新大赛
 	 * 
 	 * @param competition
 	 * @param request
@@ -116,7 +116,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 删除招聘者
+	 * 删除大赛
 	 * 
 	 * @param request
 	 * @return
@@ -131,7 +131,7 @@ public class CompetitionController {
 	}
 
 	/**
-	 * 查看招聘者详情
+	 * 查看大赛详情
 	 * 
 	 * @param request
 	 * @return

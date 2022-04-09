@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.model.Catelog;
+
 import com.model.User;
-import com.service.CatelogService;
+
 import com.service.UserService;
 import com.util.PageBean;
 
 /**
- * 应聘人员Controller业务控制类
+ * 学生员Controller业务控制类
  */
 @Controller
 public class UserController {
@@ -25,11 +25,9 @@ public class UserController {
 	 */
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private CatelogService catelogService;
-
+	
 	/**
-	 * 应聘人员列表
+	 * 学生员列表
 	 * 
 	 * @param request
 	 * @return
@@ -57,25 +55,13 @@ public class UserController {
 		String name = request.getParameter("name");
 		user.setName(name);
 		request.setAttribute("name", name);
-		String xueli = request.getParameter("xueli");
-		user.setXueli(xueli);
-		request.setAttribute("xueli", xueli);
-		String catelogid = request.getParameter("catelogid");
-		user.setCatelogid(Integer.parseInt(catelogid == null
-				|| "".equals(catelogid) ? "0" : catelogid));
-		request.setAttribute("catelogid", catelogid);
-		String zt = request.getParameter("zt");
-		user.setZt(zt);
-		request.setAttribute("zt", zt);
+
 		// 查询记录总数
 		counts = userService.getCount(user);
 		// 获取当前页记录
 		List userList = userService.queryUserList(user, page);
 		request.setAttribute("list", userList);
-		Catelog catelogQuery = new Catelog();
-		List<Catelog> catelogList = catelogService.queryCatelogList(
-				catelogQuery, null);
-		request.setAttribute("catelogList", catelogList);
+		
 		// 将分页相关参数放到request中
 		request.setAttribute("itemSize", counts);
 		int page_count = counts % PageBean.PAGE_IETM == 0 ? counts
@@ -86,7 +72,7 @@ public class UserController {
 	}
 
 	/**
-	 * 跳转到新增应聘人员界面
+	 * 跳转到新增学生员界面
 	 * 
 	 * @param request
 	 * @return
@@ -94,15 +80,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user_toAdd")
 	public String toAdd(HttpServletRequest request) throws Exception {
-		Catelog catelog = new Catelog();
-		List<Catelog> catelogList = catelogService.queryCatelogList(catelog,
-				null);
-		request.setAttribute("catelogList", catelogList);
+		
 		return "/admin/user/user_add.jsp";
 	}
 
 	/**
-	 * 保存新增应聘人员
+	 * 保存新增学生员
 	 * 
 	 * @param user
 	 * @param request
@@ -116,7 +99,7 @@ public class UserController {
 		return "redirect:user_list.action";
 	}
 	/**
-	 * 跳转到更新应聘人员界面
+	 * 跳转到更新学生员界面
 	 * 
 	 * @param request
 	 * @return
@@ -128,14 +111,10 @@ public class UserController {
 		// 根据ID查询出需要更新的记录
 		User user = userService.queryUserById(id);
 		request.setAttribute("user", user);
-		Catelog catelog = new Catelog();
-		List<Catelog> catelogList = catelogService.queryCatelogList(catelog,
-				null);
-		request.setAttribute("catelogList", catelogList);
 		return "/web/user/user_update.jsp";
 	}
 	/**
-	 * 更新应聘人员
+	 * 更新学生员
 	 * 
 	 * @param user
 	 * @param request
@@ -151,7 +130,7 @@ public class UserController {
 	}
 
 	/**
-	 * 删除应聘人员
+	 * 删除学生员
 	 * 
 	 * @param request
 	 * @return
@@ -166,7 +145,7 @@ public class UserController {
 	}
 
 	/**
-	 * 查看应聘人员详情
+	 * 查看学生员详情
 	 * 
 	 * @param request
 	 * @return
@@ -237,8 +216,6 @@ public class UserController {
 		user.setState(1);
 		// 更新数据库
 		userService.updateUser(user);
-		Catelog catelogVO = catelogService.queryCatelogById(user.getCatelogid());
-		user.setCatelogVO(catelogVO);
 		request.getSession().setAttribute("user", user);
 		request.setAttribute("message", "操作成功");
 		request.setAttribute("path", "/web/user/user_info.jsp");
@@ -246,7 +223,7 @@ public class UserController {
 	}
 	
 	/**
-	 * 跳转到更新应聘人员界面
+	 * 跳转到更新学生员界面
 	 * 
 	 * @param request
 	 * @return
@@ -254,11 +231,6 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user_toUpdate_web")
 	public String user_toUpdate_web(HttpServletRequest request) throws Exception {
-	
-		Catelog catelog = new Catelog();
-		List<Catelog> catelogList = catelogService.queryCatelogList(catelog,
-				null);
-		request.setAttribute("catelogList", catelogList);
 		return "/web/user/user_update.jsp";
 	}
 

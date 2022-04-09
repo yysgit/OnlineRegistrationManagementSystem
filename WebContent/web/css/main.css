@@ -57,6 +57,7 @@ a:active, a:focus, a:hover, button, input, textarea {
 
 #main, #wrap {
     position: relative;
+    min-height: 700px;
 }
 #header .nav-figure .dropdown a.link-logout, #header .nav-figure .dropdown a.link-recruit {
     margin-top: 6px;

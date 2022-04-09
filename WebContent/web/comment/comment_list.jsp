@@ -14,7 +14,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-language" content="zh-CN">
 
-		<title>网上求职招聘</title>
+		<title>网上报名系统</title>
 		<link href="<%=path%>/favicon.ico" type="image/x-icon"
 			rel="shortcut icon" />
 
@@ -53,7 +53,7 @@
 								<div class="item-header">
 									<div class="avtar">
 										<div class="img-wrap1">
-											<img src="<%=path%>/${info.userVO.photo}" class="avtar-img" >
+											<img src="<%=path%>${info.userVO.photo}" class="avtar-img" >
 										</div>
 									</div>
 									<div class="user-info">

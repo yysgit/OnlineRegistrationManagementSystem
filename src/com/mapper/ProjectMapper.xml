@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ProjectMapper">
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select dbp.id,
+        dbp.name,
+        dbp.hold_time as holdTime,
+        dbp.hold_address as holdAddress,
+        dbp.info,
+        dbp.content,
+        dbp.url,
+        dbp.competition_id,
+        dbc.name as competitionName,
+        dbc.type as competitionType,
+        dbc.content as competitionContent
+        from db_project dbp
+        left join db_competition dbc
+        on dbc.id=dbp.competition_id
+        <if test="page">
+            limit ${offset}, ${pageSize}
+        </if>
+    </select>
+
+    <select id="queryByCompetitionId" parameterType="java.lang.String" resultType="java.util.Map">
+        select dbp.id,
+        dbp.name,
+        dbp.hold_time as holdTime,
+        dbp.hold_address as holdAddress,
+        dbp.info,
+        dbp.content,
+        dbp.url,
+        dbp.competition_id,
+        dbc.name as competitionName,
+        dbc.type as competitionType,
+        dbc.content as competitionContent
+        from db_project dbp
+        left join db_competition dbc
+        on dbc.id=dbp.competition_id
+        where dbp.competition_id=#{competitionId}
+    </select>
+
+
+
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0)
+        from db_project
+
+    </select>
+    <select id="queryProjectById" parameterType="int" resultType="Project">
+        select dbp.id,
+               dbp.name,
+               dbp.hold_time as holdTime,
+               dbp.hold_address as holdAddress,
+               dbp.info,
+               dbp.content,
+               dbp.url,
+               dbp.competition_id,
+               dbc.name as competitionName,
+               dbc.type as competitionType,
+               dbc.content as competitionContent
+        from db_project dbp
+                 left join db_competition dbc
+                           on dbc.id=dbp.competition_id
+        where dbp.id = ${value}
+    </select>
+    <insert id="insertProject" useGeneratedKeys="true" keyProperty="id"
+            parameterType="Project">
+        insert into db_project
+            (name, hold_time, hold_address, info, content,url,competition_id)
+        values (#{name},#{holdTime}, #{holdAddress}, #{info}, #{content},#{url},#{competitionId});
+    </insert>
+    <update id="updateProject" parameterType="Project">
+        update db_project
+        set hold_time=#{holdTime},
+            hold_address=#{holdAddress},
+            info=#{info},
+            competitionId=#{competitionId},
+            url=#{url},
+            name=#{name},
+            content=#{content}
+        where id = #{id}
+    </update>
+    <delete id="deleteProject" parameterType="int">
+        delete
+        from db_project
+        where id = ${id}
+    </delete>
+</mapper>
+ 

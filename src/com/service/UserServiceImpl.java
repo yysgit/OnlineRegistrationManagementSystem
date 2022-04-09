@@ -56,10 +56,8 @@ public class UserServiceImpl implements UserService {
 			map.put("uname", user.getUname());
 			map.put("upwd", user.getUpwd());
 			map.put("name", user.getName());
-			map.put("xueli", user.getXueli());
-			map.put("catelogid", user.getCatelogid());
-			map.put("zt", user.getZt());
 			map.put("state", user.getState());
+			map.put("type", user.getType());
 		}
 		if (page != null) {
 			PageBean.setPageMap(map, page);

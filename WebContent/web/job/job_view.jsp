@@ -6,15 +6,13 @@
 	String path = request.getContextPath();
 %>
 
-
-<!-- saved from url=(0030)https://xa.lianjia.com/zufang/ -->
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-language" content="zh-CN">
 
-		<title>网上求职招聘</title>
+		<title>项目详情</title>
 		<link href="<%=path%>/favicon.ico" type="image/x-icon"
 			rel="shortcut icon" />
 		
@@ -33,13 +31,12 @@
 				
 		        <c:if test="${sessionScope.user!=null}">
 			        <c:if test="${sessionScope.user.state==0}">
-		        	alert("请先完善你的简历");
 		        	return;
 			        </c:if>
-			        <c:if test="${sessionScope.user.state==1}">
-		        	var url = "<%=path%>/offer_add.action?jobid="+jobid;
-			 		window.location.href=url;
-			 		</c:if>
+<%--			        <c:if test="${sessionScope.user.state==1}">--%>
+<%--		        	var url = "<%=path%>/offer_add.action?jobid="+jobid;--%>
+<%--			 		window.location.href=url;--%>
+<%--			 		</c:if>--%>
 		         </c:if>
 			} 
 		</script>
@@ -56,18 +53,9 @@
 						<div class="info-primary">
 	                        <div class="job-status"><span>火热报名中...</span></div>
 	                        <div class="name">
-	                            <h1>五子棋</h1>
-	                            <span class="salary"></span>
+	                            <h1>${sessionScope.project.name}</h1>
+	                            <span class="from" style="font-size: 16px">来自：${sessionScope.project.competitionName}</span>
 	                        </div>
-<%--	                            <p><a class="text-city" href="/xian/">${job.quyu}</a><em class="dolt"></em>${job.jingyan}<em class="dolt"></em>${job.xueli}</p>--%>
-<%--	                            <div class="tag-container">--%>
-<%--	                                --%>
-<%--	                                <div class="job-tags">--%>
-<%--	                                    <c:forEach items="${job.fuliArray}" var="tag" varStatus="var">	--%>
-<%--											<span>${tag}</span>--%>
-<%--										</c:forEach>--%>
-<%--	                                </div>--%>
-<%--	                            </div>--%>
 	                    </div>
 	                    <div class="job-op" style="margin-top: -20px;">
 	                    	<c:if test="${is_offer!=1}">
@@ -84,24 +72,24 @@
 				<div class="inner home-inner">
 					<div class="job-sider">
 						<div class="promotion-img">
-	                        <a ><img src="https://img1.baidu.com/it/u=89147825,2037667010&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500" ></a>
+	                        <a ><img src="${sessionScope.project.url}" ></a>
 	                    </div>
 					
 					</div>
 					<div class="job-detail">
 						<div class="detail-content">
 							<div class="job-sec">
-	                            <h3>五子棋</h3>
+	                            <h3>${sessionScope.project.name}</h3>
 	                            <div class="text">
-									五子棋是全国智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏。双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成五子连珠者获胜。
-	                            </div>
+									${sessionScope.project.content}
+								</div>
 	                        </div>
 						</div>
 						<div class="detail-content">
 							<div class="job-sec">
 	                            <h3>比赛要求</h3>
-	                            <div class="text">
-									比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求比赛要求
+	                            <div  style="white-space:pre-wrap;">
+									${sessionScope.project.info}
 	                            </div>
 	                        </div>
 						</div>
