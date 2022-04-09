@@ -94,7 +94,7 @@ public class ProjectController {
 	public String toUpdate(HttpServletRequest request) throws Exception {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// 根据ID查询出需要更新的记录
-		Map project = projectService.queryProjectById(id);
+		List<Map> project = projectService.queryProjectById(id);
 		request.setAttribute("project", project);
 		return "/admin/project/project_update.jsp";
 	}
@@ -141,7 +141,7 @@ public class ProjectController {
 	public String toView(HttpServletRequest request) throws Exception {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// 根据ID查询出记录放到request中，到前台jsp界面显示
-		Map project = projectService.queryProjectById(id);
+		List<Map> project = projectService.queryProjectById(id);
 		request.setAttribute("project", project);
 		return "/admin/project/project_view.jsp";
 	}

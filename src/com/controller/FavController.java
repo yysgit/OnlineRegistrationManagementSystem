@@ -68,10 +68,10 @@ public class FavController {
 		// 获取当前页记录
 		List<Fav> favList = favService.queryFavList(fav, page);
 		if(favList!=null&&favList.size()>0){
-			for (Fav fav2 : favList) {
-				Catelog catelogVO = catelogService.queryCatelogById(fav2.getUserVO().getCatelogid());
-				fav2.getUserVO().setCatelogVO(catelogVO);
-			}
+//			for (Fav fav2 : favList) {
+//				Catelog catelogVO = catelogService.queryCatelogById(fav2.getUserVO().getCatelogid());
+//				fav2.getUserVO().setCatelogVO(catelogVO);
+//			}
 		}
 		request.setAttribute("list", favList);
 		User userQuery = new User();

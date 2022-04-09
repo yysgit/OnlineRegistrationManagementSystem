@@ -57,5 +57,5 @@ public interface ProjectService {
 	 * @param id
 	 * @return
 	 */
-	public Map queryProjectById(int id) throws Exception;
+	public List<Map> queryProjectById(int id) throws Exception;
 }

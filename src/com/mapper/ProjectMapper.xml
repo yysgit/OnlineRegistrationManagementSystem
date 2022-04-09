@@ -43,12 +43,12 @@
 
 
 
-    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+    <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(0)
         from db_project
 
     </select>
-    <select id="queryProjectById" parameterType="int" resultType="Project">
+    <select id="queryProjectById" parameterType="java.lang.Integer" resultType="java.util.Map">
         select dbp.id,
                dbp.name,
                dbp.hold_time as holdTime,

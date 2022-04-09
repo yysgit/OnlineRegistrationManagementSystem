@@ -101,7 +101,7 @@ public class ProjectServiceImpl implements ProjectService {
 	 * @param id
 	 * @return
 	 */
-	public Map queryProjectById(int id) throws Exception {
+	public List<Map> queryProjectById(int id) throws Exception {
 		return projectMapper.queryProjectById(id);
 	}
 }

@@ -83,8 +83,8 @@ public class IndexController {
 	@RequestMapping(value = "/job_toView_web")
 	public String job_toView_web(HttpServletRequest request) throws Exception {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Map project=projectService.queryProjectById(id);
-		request.getSession().setAttribute("project", project);
+		List<Map> project=projectService.queryProjectById(id);
+		request.getSession().setAttribute("project", project.get(0));
 		return "/web/job/job_view.jsp";
 	}
 	

@@ -1,6 +1,7 @@
 package com.mapper;
 
 import com.model.Project;
+import org.apache.ibatis.annotations.MapKey;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,13 @@ public interface ProjectMapper {
 	 * 
 	 * @return
 	 */
+	@MapKey("id")
 	public List<Map> query(Map<String, Object> inputParam);
 
 	/**
 	 * 查询大赛下的所有项目
 	 */
+	@MapKey("id")
 	public List<Map>   queryByCompetitionId(String competitionId);
 
 	/**
@@ -56,5 +59,7 @@ public interface ProjectMapper {
 	 * @param id
 	 * @return
 	 */
-	public Map queryProjectById(int id);
+
+	@MapKey("id")
+	public List<Map> queryProjectById(int id);
 }
