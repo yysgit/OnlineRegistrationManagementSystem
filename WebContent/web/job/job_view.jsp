@@ -33,10 +33,10 @@
 			        <c:if test="${sessionScope.user.state==0}">
 		        	return;
 			        </c:if>
-<%--			        <c:if test="${sessionScope.user.state==1}">--%>
-<%--		        	var url = "<%=path%>/offer_add.action?jobid="+jobid;--%>
-<%--			 		window.location.href=url;--%>
-<%--			 		</c:if>--%>
+			        <c:if test="${sessionScope.user.state==1}">
+		        	var url ="<%=path%>/web/signup.jsp";
+			 		window.location.href=url;
+			 		</c:if>
 		         </c:if>
 			} 
 		</script>
@@ -60,8 +60,8 @@
 	                    <div class="job-op" style="margin-top: -20px;">
 	                    	<c:if test="${is_offer!=1}">
 	                    	<div class="btn-container">
-                            	<!-- 未登录 -->	
-	                     		<a class="btn btn-startchat" onclick="toToudi(${job.id})" >去报名</a>
+                            	<!-- 未注册 -->
+	                     		<a  class="btn btn-startchat" onclick="toToudi(${job.id})" >去报名</a>
 	                        </div>
 	                        </c:if>
 	                    </div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SignupMapper">
+
+	<select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+		select id,project_id as projectId ,school_id as schoolId,create_user_id as createUserId,ranks,captain,instructor,contestants  from db_signup
+		<if test="page">
+			limit  ${offset}, ${pageSize}
+        </if>
+	</select>
+	<select id="getCount" parameterType="java.util.Map" resultType="Int">
+		select count(0) from db_signup
+
+	</select>
+	<select id="querySignupById" parameterType="int" resultType="Signup">
+		select id,project_id as projectId ,school_id as schoolId,create_user_id as createUserId,ranks,captain,instructor,contestants from db_signup where id=${value}
+	</select>
+	<insert id="insertSignup" useGeneratedKeys="true" keyProperty="id"
+		parameterType="Signup">
+		insert into db_signup
+		(project_id,school_id,create_user_id,ranks,captain,instructor,contestants)
+		values
+		(#{projectId},#{schoolId},#{createUserId},#{ranks},#{captain},#{instructor},#{contestants});
+	</insert>
+	<update id="updateSignup" parameterType="Signup">
+		update db_signup set
+							 project_id=#{projectId},
+							 school_id=#{schoolId},
+							 create_user_id=#{createUserId},
+							 ranks=#{ranks},
+							 captain=#{captain},
+							 instructor=#{instructor},
+			contestants=#{contestants}
+		where
+		id=#{id}	
+	</update>
+	<delete id="deleteSignup" parameterType="int">
+		delete from db_signup where id=${id}
+	</delete>
+</mapper>
+ 

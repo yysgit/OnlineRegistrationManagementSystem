@@ -1,14 +1,14 @@
 package com.mapper;
 
-import com.model.Competition;
+import com.model.School;
 import org.apache.ibatis.annotations.MapKey;
 
 import java.util.List;
 import java.util.Map;
 
-public interface CompetitionMapper {
+public interface SchoolMapper {
 	/**
-	 * 查询所有大赛
+	 * 查询所有学校
 	 * 
 	 * @return
 	 */
@@ -16,7 +16,7 @@ public interface CompetitionMapper {
 	public List<Map> query(Map<String, Object> inputParam);
 
 	/**
-	 * 查询大赛记录数
+	 * 查询学校记录数
 	 * 
 	 * @param inputParam
 	 * @return
@@ -24,28 +24,28 @@ public interface CompetitionMapper {
 	public int getCount(Map<String, Object> inputParam);
 
 	/**
-	 * 保存大赛
+	 * 保存学校
 	 * 
-	 * @param competition
+	 * @param school
 	 * @return
 	 */
-	public int insertCompetition(Competition competition);
+	public int insertSchool(School school);
 
 	/**
-	 * 删除大赛
+	 * 删除学校
 	 * 
 	 * @param id
 	 * @return
 	 */
-	public int deleteCompetition(int id);
+	public int deleteSchool(int id);
 
 	/**
-	 * 更新大赛
+	 * 更新学校
 	 * 
-	 * @param competition
+	 * @param school
 	 * @return
 	 */
-	public int updateCompetition(Competition competition);
+	public int updateSchool(School school);
 
 	/**
 	 * 根据ID查询记录
@@ -53,5 +53,5 @@ public interface CompetitionMapper {
 	 * @param id
 	 * @return
 	 */
-	public Competition queryCompetitionById(int id);
+	public School querySchoolById(int id);
 }

@@ -13,13 +13,17 @@
 		<script type="text/javascript" src="<%=path%>/js/jquery-pdm.js"></script>
 		<script type="text/javascript" src="<%=path%>/js/layer/layer.js"></script>
 		<link href="<%=path%>/css/login.css" rel="stylesheet">
-		<title>网上求职招聘系统</title>
+		<title>大赛报名</title>
 	</head>
 	<body>
 		<div class="login">
 			<div class="login-top">
 				<div style="text-align: center; padding-top: 50px;">
-					<img src="<%=path%>/images/logo.png" height="62">
+<%--					<img src="<%=path%>/images/logo.png" height="62">--%>
+					<div style="
+    font-size: 33px;
+    color: white;
+">大赛报名管理系统</div>
 				</div>
 			</div>
 			<div class="loginDiv">
@@ -43,14 +47,15 @@
 							
 							<p class="p3">
 								<select id="utype" name="utype" class="alterOption">
-									<option value="1">招聘员工</option>
-									<option value="0">管理员</option>
+									<option value="1">学校管理员</option>
+									<option value="0">大赛管理员</option>
 								</select>
 							</p>
 							
 							<p style="padding-left: 0px; margin-bottom: 20px;">
-								<input type="button" onclick="return login();" id="btnSubmit" value="登录" class="btn btn1">
-							
+								<input style="width: 45%;margin-right: 5%;" type="button" onclick="return login();"  value="登录" class="btn btn1">
+								<input style="width: 45%" type="button" onclick="return register();"  value="注册" class="btn btn1">
+
 							</p>
 						</form>
 					</div>
@@ -60,7 +65,7 @@
 				<a href="">技术支持</a>
 			</div>
 			<div class="login-footer">
-				版权©-运动会管理系统
+				版权©-报名管理系统
 			</div>
 		</div>
 		<div class="layui-layer-move"></div>
@@ -97,6 +102,9 @@
    		   });
     	  
       }
+	 function register(){
+      	window.location.href="/admin/register.jsp"
+	 }
      
 </script>
 </html>

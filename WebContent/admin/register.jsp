@@ -36,11 +36,11 @@
 								<div class="col-sm-7">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">
-											<font color="red">*</font>住户号
+											<font color="red">*</font>手机号
 										</label>
 										<div class="col-sm-9 form-inline">
 											<input id="zno" name="zno" size="35" class="form-control"
-												type="text" value="" tip="请输入住户号" />
+												type="text" value="" tip="请输入手机号" />
 										</div>
 									</div>
 								</div>
@@ -62,7 +62,7 @@
 								<div class="col-sm-7">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">
-											房号
+											大学
 										</label>
 										<div class="col-sm-9 form-inline">
 											<select id="fid" name="fid" class="form-control">
@@ -80,11 +80,11 @@
 								<div class="col-sm-7">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">
-											<font color="red">*</font>业主姓名
+											<font color="red">*</font>姓名
 										</label>
 										<div class="col-sm-9 form-inline">
 											<input id="name" name="name" size="35" class="form-control"
-												type="text" value="" tip="请输入业主姓名" />
+												type="text" value="" tip="请输入姓名" />
 										</div>
 									</div>
 								</div>
@@ -108,46 +108,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="row rowmargin">
-								<div class="col-sm-7">
-									<div class="form-group">
-										<label class="col-sm-3 control-label">
-											工作单位
-										</label>
-										<div class="col-sm-9 form-inline">
-											<input id="gzdw" name="gzdw" size="35" class="form-control"
-												type="text" value="" tip="请输入工作单位" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row rowmargin">
-								<div class="col-sm-7">
-									<div class="form-group">
-										<label class="col-sm-3 control-label">
-											电话
-										</label>
-										<div class="col-sm-9 form-inline">
-											<input id="tel" name="tel" size="35" class="form-control"
-												type="text" value="" tip="请输入电话" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row rowmargin">
-								<div class="col-sm-7">
-									<div class="form-group">
-										<label class="col-sm-3 control-label">
-											备注
-										</label>
-										<div class="col-sm-9 form-inline">
-											<textarea rows="5" cols="80" id="remark" name="remark"
-												class="form-control" tip="请输入备注"></textarea>
-										</div>
-									</div>
-								</div>
-							</div>
-
 							<div class="row">
 								<div class="col-sm-2">
 								</div>
