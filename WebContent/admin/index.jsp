@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<%=path%>/js/jquery-3.4.1.min.js"></script>
 <script src="<%=path%>/css/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=path%>/js/jquery-pdm.js"></script>
-<title>网上求职招聘系统</title>
+<title>网上报名系统</title>
 </head>
 <body>
 <body>

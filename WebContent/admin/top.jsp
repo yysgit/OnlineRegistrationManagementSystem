@@ -16,14 +16,14 @@
 			<div>
 			 
 			</div>
-			<div id="system_title">网上求职招聘系统</div>
+			<div id="system_title">网上报名系统</div>
 		</div>
 		<div id="rinfo">
 			当前用户：
 			  <span>
                  
                  <c:if test="${sessionScope.utype==0}">${sessionScope.cuser.name}【管理员】</c:if>
-                 <c:if test="${sessionScope.utype==1}">${sessionScope.boss.name}【招聘人员】</c:if> 
+                 <c:if test="${sessionScope.utype==1}">${sessionScope.boss.name}【学校管理】</c:if>
              </span>
 			<span id="exit">
 				<a  onclick="exit();">退出</a>

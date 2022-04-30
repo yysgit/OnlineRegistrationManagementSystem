@@ -14,7 +14,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="Content-language" content="zh-CN">
 
-		<title>网上求职招聘</title>
+		<title>网上报名系统</title>
 		<link href="<%=path%>/favicon.ico" type="image/x-icon"
 			rel="shortcut icon" />
 
