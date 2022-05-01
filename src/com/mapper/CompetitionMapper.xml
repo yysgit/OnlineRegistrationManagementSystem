@@ -34,7 +34,7 @@
 		id=#{id}	
 	</update>
 	<delete id="deleteCompetition" parameterType="java.lang.Integer">
-		delete from db_competition where id=${id}
+		delete from db_competition where id=#{id}
 	</delete>
 </mapper>
  

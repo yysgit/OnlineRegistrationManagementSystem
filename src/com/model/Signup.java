@@ -5,13 +5,19 @@ import java.util.Date;
 public class Signup {
     private Integer id;
 
-    private Integer project_id;
-    private Integer school_id;
+    private Integer projectId;
+    private Integer schoolId;
     private String ranks;
     private String captain;
     private String instructor;
     private String contestants;
-    private Integer create_user_id;
+    private Integer createUserId;
+    private Integer peopleNum;
+    private String programName;
+    private String programEngName;
+    private String participatingAccount;
+    private String phoneNum;
+    private String company;
 
 
     public Integer getId() {
@@ -22,20 +28,20 @@ public class Signup {
         this.id = id;
     }
 
-    public Integer getProject_id() {
-        return project_id;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setProject_id(Integer project_id) {
-        this.project_id = project_id;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
-    public Integer getSchool_id() {
-        return school_id;
+    public Integer getSchoolId() {
+        return schoolId;
     }
 
-    public void setSchool_id(Integer school_id) {
-        this.school_id = school_id;
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
     }
 
     public String getRanks() {
@@ -70,11 +76,60 @@ public class Signup {
         this.contestants = contestants;
     }
 
-    public Integer getCreate_user_id() {
-        return create_user_id;
+    public Integer getCreateUserId() {
+        return createUserId;
     }
 
-    public void setCreate_user_id(Integer create_user_id) {
-        this.create_user_id = create_user_id;
+    public void setCreateUserId(Integer createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public Integer getPeopleNum() {
+        return peopleNum;
+    }
+
+    public void setPeopleNum(Integer peopleNum) {
+        this.peopleNum = peopleNum;
+    }
+
+    public String getProgramName() {
+        return programName;
+    }
+
+    public void setProgramName(String programName) {
+        this.programName = programName;
+    }
+
+    public String getProgramEngName() {
+        return programEngName;
+    }
+
+    public void setProgramEngName(String programEngName) {
+        this.programEngName = programEngName;
+    }
+
+    public String getParticipatingAccount() {
+        return participatingAccount;
+    }
+
+    public void setParticipatingAccount(String participatingAccount) {
+        this.participatingAccount = participatingAccount;
+    }
+
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

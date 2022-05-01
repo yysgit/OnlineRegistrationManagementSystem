@@ -30,7 +30,7 @@
 		id=#{id}	
 	</update>
 	<delete id="deleteSchool" parameterType="int">
-		delete from db_school where id=${id}
+		delete from db_school where id=#{id}
 	</delete>
 </mapper>
  

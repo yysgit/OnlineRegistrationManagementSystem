@@ -19,9 +19,11 @@
 	<insert id="insertSignup" useGeneratedKeys="true" keyProperty="id"
 		parameterType="Signup">
 		insert into db_signup
-		(project_id,school_id,create_user_id,ranks,captain,instructor,contestants)
+		(project_id,school_id,create_user_id,ranks,captain,instructor,contestants,people_num,program_name,
+program_eng_name,participating_account,phone_num,company)
 		values
-		(#{projectId},#{schoolId},#{createUserId},#{ranks},#{captain},#{instructor},#{contestants});
+		(#{projectId},#{schoolId},#{createUserId},#{ranks},#{captain},#{instructor},#{contestants},
+		 #{peopleNum},#{programName},#{programEngName},#{participatingAccount},#{phoneNum},#{company});
 	</insert>
 	<update id="updateSignup" parameterType="Signup">
 		update db_signup set
@@ -36,7 +38,7 @@
 		id=#{id}	
 	</update>
 	<delete id="deleteSignup" parameterType="int">
-		delete from db_signup where id=${id}
+		delete from db_signup where id=#{id}
 	</delete>
 </mapper>
  

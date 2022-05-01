@@ -85,7 +85,7 @@
     <delete id="deleteProject" parameterType="int">
         delete
         from db_project
-        where id = ${id}
+        where id = #{id}
     </delete>
 </mapper>
  

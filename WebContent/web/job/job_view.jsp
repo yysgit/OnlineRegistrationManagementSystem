@@ -34,7 +34,7 @@
 		        	return;
 			        </c:if>
 			        <c:if test="${sessionScope.user.state==1}">
-		        	var url ="<%=path%>/web/signup.jsp";
+		        	var url ="<%=path%>/signup_toPage.action?projectId="+jobid;
 			 		window.location.href=url;
 			 		</c:if>
 		         </c:if>
@@ -61,7 +61,7 @@
 	                    	<c:if test="${is_offer!=1}">
 	                    	<div class="btn-container">
                             	<!-- 未注册 -->
-	                     		<a  class="btn btn-startchat" onclick="toToudi(${job.id})" >去报名</a>
+	                     		<a  class="btn btn-startchat" onclick="toToudi(${sessionScope.project.id})" >去报名</a>
 	                        </div>
 	                        </c:if>
 	                    </div>
