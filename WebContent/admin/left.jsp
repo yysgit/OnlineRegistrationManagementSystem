@@ -47,6 +47,34 @@
 							</div>
 						</div>
 					</div>
+
+						<div class="panel panel-inner">
+							<div class="panel-heading panel-heading-self" role="tab" id="headingTwo">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										<span class="glyphicon glyphicon-folder-open"></span>
+										比赛管理
+									</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div class="list-group list-group-self">
+									<a href="<%=path%>/competition_list.action" target="appiframe" class="list-group-item">
+										<span class="glyphicon glyphicon-menu-right"></span>
+										大赛管理
+									</a>
+									<a href="<%=path%>/project_list.jsp.action" target="appiframe" class="list-group-item">
+										<span class="glyphicon glyphicon-menu-right"></span>
+										项目管理
+									</a>
+									<a href="<%=path%>/school_list.jsp.action" target="appiframe" class="list-group-item">
+										<span class="glyphicon glyphicon-menu-right"></span>
+										学校管理
+									</a>
+								</div>
+							</div>
+						</div>
+
 					
 <%--					<div class="panel panel-inner">--%>
 <%--						<div class="panel-heading panel-heading-self" role="tab" id="heading1">--%>

@@ -25,44 +25,42 @@
 				<div class="panel-body">
 					<div class="pull-left">
 						<div class="form-group qinfo">
-							<label>用户名：</label>
-							<input name="uname" value="${uname}" class="form-control">
+							<label>大赛名称：</label>
+							<input name="uname"  class="form-control">
 						</div>
 					 
 						<button type="submit" class="btn btn-default">查询</button>
 					</div>
 				</div>
 				<pg:pager url="tadmin_list.action" items="${itemSize}" maxPageItems="${pageItem}" maxIndexPages="${pageItem}" isOffset="${true}" export="offset,currentPageNumber=pageNumber" scope="request">
-					<pg:param name="uname" value="${uname}" />
-					<pg:param name="upwd" value="${upwd}" />
+
 					<div class="table-responsive">
 						<table class="table table-striped table-hover" style="text-align: center;">
 							<thead>
 								<tr>
-									<td>用户名</td>
-									
-									<td>姓名</td>
-									<td>联系电话</td>
+									<td>标题名称</td>
+									<td>举办时间</td>
+									<td>举办地点</td>
 									<td>类型</td>
+									<td>描述</td>
 									<th width="12%">操作</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${list}" var="info">
 									<tr>
-										<td>
-											<a style="color: #000000" href="<%=path%>/tadmin_toView.action?id=${info.id}">${info.uname}</a>
-										</td>
-										
 										<td>${info.name}</td>
-										<td>${info.tel}</td>
-										<td>${info.utype}</td>
+										<td>${info.holdTime}</td>
+										<td>${info.holdAddress}</td>
+										<td>${info.type==0?"只面向大学生":"其他"}</td>
+										<td style="width: 30%">${info.content}</td>
 										<td>
-											<a href="<%=path%>/tadmin_toUpdate.action?id=${info.id}" class="btn btn-info btn-xs">
+											<a href="<%=path%>/competition_toUpdate.action?id=${info.id}"
+											   class="btn btn-info btn-xs">
 												<span class="glyphicon glyphicon-edit"></span>
 												编辑
 											</a>
-											<a href="javascript:void();" onclick="delInfo('${info.id}');" class="btn btn-danger btn-xs">
+											<a href="javascript:;" onclick="delInfo('${info.id}')" class="btn btn-danger btn-xs">
 												<span class="glyphicon glyphicon-trash"></span>
 												删除
 											</a>
@@ -89,12 +87,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
    $("#addBtn").click(function(){
-        window.location.href = '<%=path%>/tadmin_toAdd.action';
+        window.location.href = '<%=path%>/competition_toAdd.action';
    });
 });
 function delInfo(id){
 	 if(confirm("是否确认删除？")){
-	     window.location.href = '<%=path%>/tadmin_delete.action?id=' + id;
+	     window.location.href = '<%=path%>/competition_delete.action?id=' + id;
 	 }
 	}
 </script>

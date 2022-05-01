@@ -14,7 +14,7 @@
 
 	</select>
 	<select id="queryCompetitionById" parameterType="int" resultType="Competition">
-		select id,name,hold_time as holdTime,hold_address as holeAddress,type,content from db_competition where id=${value}
+		select id,name,hold_time as holdTime,hold_address as holdAddress,type,content from db_competition where id=${value}
 	</select>
 	<insert id="insertCompetition" useGeneratedKeys="true" keyProperty="id"
 		parameterType="Competition">
@@ -33,7 +33,7 @@
 		where
 		id=#{id}	
 	</update>
-	<delete id="deleteCompetition" parameterType="int">
+	<delete id="deleteCompetition" parameterType="java.lang.Integer">
 		delete from db_competition where id=${id}
 	</delete>
 </mapper>
