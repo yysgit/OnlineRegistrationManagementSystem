@@ -188,7 +188,7 @@ public class SignupController {
 
         // 保存到数据库
         signupService.insertSignup(signup);
-        return "web/user_info.jsp";
+        return "web/user/user_info.jsp";
     }
 
     /**
