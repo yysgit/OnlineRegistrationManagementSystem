@@ -103,7 +103,7 @@
     	  
       }
 	 function register(){
-      	window.location.href="/admin/register.jsp"
+      	window.location.href="/tadmin_toRegister.action"
 	 }
      
 </script>

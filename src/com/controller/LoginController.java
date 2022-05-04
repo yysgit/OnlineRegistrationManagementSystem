@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.mapper.SchoolMapper;
 import com.model.Boss;
 import com.model.Tadmin;
 import com.service.BossService;
@@ -32,7 +33,8 @@ public class LoginController {
 	private UserService userService;
 	@Autowired
 	private BossService bossService;
-
+	@Autowired
+	private SchoolMapper schoolMapper;
 	/**
 	 * 用户/管理员登录
 	 *
@@ -87,6 +89,21 @@ public class LoginController {
 		return "/admin/login.jsp";
 	}
 
+
+	@RequestMapping(value = "/tadmin_toRegister")
+	public String signup_toPage(HttpServletRequest request) throws Exception {
+		request.setAttribute("schoolList", schoolMapper.query(null));
+		return "/admin/register.jsp";
+	}
+
+
+	@RequestMapping(value = "/tadmin_addReg")
+	public String signup_toPage(Boss boss,HttpServletRequest request) throws Exception {
+		boss.setUname(boss.getTel());
+		boss.setZhiwei("学校管理员");
+		bossService.insertBoss(boss);
+		return "/admin/login.jsp";
+	}
 
 	@ResponseBody
 	@RequestMapping(value = "/user_login")
