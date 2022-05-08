@@ -6,18 +6,23 @@
     <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
         select dbp.id,
         dbp.name,
+        dbp.code,
         dbp.hold_time as holdTime,
         dbp.hold_address as holdAddress,
         dbp.info,
         dbp.content,
         dbp.url,
-        dbp.competition_id,
+        dbp.competition_id as competitionId,
         dbc.name as competitionName,
         dbc.type as competitionType,
         dbc.content as competitionContent
         from db_project dbp
         left join db_competition dbc
         on dbc.id=dbp.competition_id
+        where 1=1
+        <if test="name!=null and name!=''">
+            and (dbp.name LIKE concat(concat("%",#{name}),"%"))
+        </if>
         <if test="page">
             limit ${offset}, ${pageSize}
         </if>
@@ -26,12 +31,13 @@
     <select id="queryByCompetitionId" parameterType="java.lang.String" resultType="java.util.Map">
         select dbp.id,
         dbp.name,
+        dbp.code,
         dbp.hold_time as holdTime,
         dbp.hold_address as holdAddress,
         dbp.info,
         dbp.content,
         dbp.url,
-        dbp.competition_id,
+               dbp.competition_id as competitionId,
         dbc.name as competitionName,
         dbc.type as competitionType,
         dbc.content as competitionContent
@@ -46,17 +52,22 @@
     <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(0)
         from db_project
+        where 1=1
+        <if test="name!=null and name!=''">
+            and (name LIKE concat(concat("%",#{name}),"%"))
+        </if>
 
     </select>
     <select id="queryProjectById" parameterType="java.lang.Integer" resultType="java.util.Map">
         select dbp.id,
                dbp.name,
+               dbp.code,
                dbp.hold_time as holdTime,
                dbp.hold_address as holdAddress,
                dbp.info,
                dbp.content,
                dbp.url,
-               dbp.competition_id,
+               dbp.competition_id as competitionId,
                dbc.name as competitionName,
                dbc.type as competitionType,
                dbc.content as competitionContent
@@ -68,15 +79,16 @@
     <insert id="insertProject" useGeneratedKeys="true" keyProperty="id"
             parameterType="Project">
         insert into db_project
-            (name, hold_time, hold_address, info, content,url,competition_id)
-        values (#{name},#{holdTime}, #{holdAddress}, #{info}, #{content},#{url},#{competitionId});
+            (name,code, hold_time, hold_address, info, content,url,competition_id)
+        values (#{name},#{code},#{holdTime}, #{holdAddress}, #{info}, #{content},#{url},#{competitionId});
     </insert>
     <update id="updateProject" parameterType="Project">
         update db_project
         set hold_time=#{holdTime},
             hold_address=#{holdAddress},
             info=#{info},
-            competitionId=#{competitionId},
+            code=#{code},
+            competition_id=#{competitionId},
             url=#{url},
             name=#{name},
             content=#{content}

@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.CompetitionMapper">
 
-	<select id="query" parameterType="java.util.Map" resultType="java.util.Map">
-		select id,name,hold_time as holdTime,hold_address as holdAddress,type,content from db_competition
-		<if test="page">
-			limit  ${offset}, ${pageSize}
-        </if>
-	</select>
-	<select id="getCount" parameterType="java.util.Map" resultType="Int">
-		select count(0) from db_competition
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select id,name,hold_time as holdTime,hold_address as holdAddress,type,content ,code from db_competition
 
-	</select>
-	<select id="queryCompetitionById" parameterType="int" resultType="Competition">
-		select id,name,hold_time as holdTime,hold_address as holdAddress,type,content from db_competition where id=${value}
-	</select>
-	<insert id="insertCompetition" useGeneratedKeys="true" keyProperty="id"
-		parameterType="Competition">
-		insert into db_competition
-		(name,			hold_time,hold_address,type,content)
-		values
-		(#{name},#{holdTime},#{holdAddress},#{type},#{content});
-	</insert>
-	<update id="updateCompetition" parameterType="Competition">
-		update db_competition set
-								  hold_time=#{holdTime},
-		                          hold_address=#{holdAddress},
-								  type=#{type},
-								  name=#{name},
-		                          content=#{content}
-		where
-		id=#{id}	
-	</update>
-	<delete id="deleteCompetition" parameterType="java.lang.Integer">
-		delete from db_competition where id=#{id}
-	</delete>
+        where 1=1
+        <if test="name!=null and name!=''">
+            and (name LIKE concat(concat("%",#{name}),"%"))
+        </if>
+        <if test="page">
+            limit ${offset}, ${pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0) from db_competition
+        where 1=1
+        <if test="name!=null and name!=''">
+            and (name LIKE concat(concat("%",#{name}),"%"))
+        </if>
+
+    </select>
+    <select id="queryCompetitionById" parameterType="int" resultType="Competition">
+        select id, name, hold_time as holdTime, hold_address as holdAddress, type, content, code
+        from db_competition
+        where id = ${value}
+    </select>
+    <insert id="insertCompetition" useGeneratedKeys="true" keyProperty="id"
+            parameterType="Competition">
+        insert into db_competition
+            (name, hold_time, hold_address, type, content, code)
+        values (#{name}, #{holdTime}, #{holdAddress}, #{type}, #{content}, #{code});
+    </insert>
+    <update id="updateCompetition" parameterType="Competition">
+        update db_competition
+        set hold_time=#{holdTime},
+            hold_address=#{holdAddress},
+            type=#{type},
+            name=#{name},
+            content=#{content},
+            code=#{code}
+        where id = #{id}
+    </update>
+    <delete id="deleteCompetition" parameterType="java.lang.Integer">
+        delete
+        from db_competition
+        where id = #{id}
+    </delete>
 </mapper>
  

@@ -24,12 +24,26 @@
         <div class="panel-heading">新增</div>
         <div class="panel-body">
 
-            <form action="<%=path%>/competition_add.action" method="post" id="addForm">
+            <form action="<%=path%>/project_add.action" method="post" id="addForm">
 
-<%--                开始--%>
+                <%--                开始--%>
+                    <div class="row rowmargin col-sm-7">
+                        <div class="form-group">
+                            <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>大赛:</label>
+                            <div class="col-sm-8">
+                                <select name="competitionId" class="form-control add_competitionId">
+                                    <c:forEach items="${competitionList}" var="competition">
+                                        <option value="${competition.id}"> ${competition.name} </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>名称:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>名称:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control add_name" name="name">
                         </div>
@@ -37,7 +51,15 @@
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>简介:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>编号:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control add_code" name="code">
+                        </div>
+                    </div>
+                </div>
+                <div class="row rowmargin col-sm-7">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>简介:</label>
                         <div class="col-sm-8">
                             <textarea class="form-control add_content" rows="6" name="content"></textarea>
                         </div>
@@ -45,7 +67,7 @@
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>详情:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>详情:</label>
                         <div class="col-sm-8">
                             <textarea class="form-control add_info" rows="6" name="info"></textarea>
                         </div>
@@ -53,15 +75,16 @@
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>举办时间:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>举办时间:</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control add_hold_time" value="" name="holdTime" placeholder="请选择时间">
+                            <input type="date" class="form-control add_hold_time" value="" name="holdTime"
+                                   placeholder="请选择时间">
                         </div>
                     </div>
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>举办地点:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>举办地点:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control add_hold_address" name="holdAddress">
                         </div>
@@ -74,14 +97,14 @@
                         </label>
                         <div class="col-sm-9 form-inline">
                             <input id="tupian" readonly="readonly" name="url"
-                                   size="35"  class="form-control add_url"
-                                   type="text" tip="请上传文件" />
-                            <input type="button" value="上传" onclick="up('tupian',0)" />
+                                   size="35" class="form-control add_url"
+                                   type="text" tip="请上传文件"/>
+                            <input type="button" value="上传" onclick="up('tupian',0)"/>
                         </div>
                     </div>
                 </div>
 
-<%--                结束--%>
+                <%--                结束--%>
 
                 <div class="row  col-sm-7" style="text-align: center;">
                     <button type="submit" class="btn btn-primary modalSave" style="margin-top: 40px;">提交</button>
@@ -103,59 +126,59 @@
         });
 
         //   新建 保存按钮
-        $(document).on("click",".modalSave",function(){
+        $(document).on("click", ".modalSave", function () {
 
             // $("#exampleModal").modal("hide");
             let _obj = {};
+            _obj.competitionId = $(".add_competitionId").val(); //名称
             _obj.name = $(".add_name").val(); //名称
             _obj.add_content = $('.add_content').val()//简介
             _obj.add_info = $(".add_info").val(); //详情
             _obj.add_hold_time = $(".add_hold_time").val(); //举办时间
             _obj.add_hold_address = $(".add_hold_address").val(); //举办地点
             _obj.add_url = $(".add_url").val(); //图片路径
+            _obj.code = $(".add_code").val(); //编号
 
-            if (_obj.name=="") {
-                alert("请填写名称");return false;
+            if (_obj.competitionId == "") {
+                alert("请选择大赛");
+                return false;
             }
-            if (_obj.add_content=="") {
-                alert("请填写简介");return false;
+            if (_obj.name == "") {
+                alert("请填写名称");
+                return false;
             }
-            if (_obj.add_info=="") {
-                alert("请填写详情");return false;
+            if (_obj.add_content == "") {
+                alert("请填写简介");
+                return false;
             }
-            if (_obj.add_hold_time=="") {
-                alert("请选择举办时间");return false;
+            if (_obj.add_info == "") {
+                alert("请填写详情");
+                return false;
             }
-            if (_obj.add_hold_address=="") {
-                alert("请填写举办地点");return false;
+            if (_obj.add_hold_time == "") {
+                alert("请选择举办时间");
+                return false;
             }
-            if (_obj.add_url=="") {
-                alert("请选择图片地址");return false;
+            if (_obj.add_hold_address == "") {
+                alert("请填写举办地点");
+                return false;
+            }
+            if (_obj.add_url == "") {
+                alert("请选择图片地址");
+                return false;
+            }
+            if (_obj.code == "") {
+                alert("请填写编号");
+                return false;
             }
 
             $("#addForm").submit();
 
         });
 
-        // $("#addForm").validate({
-        //     submitHandler: function (form) {//验证通过后的执行方法
-        //         form.submit();
-        //     },
-        //     rules: {
-        //
-        //     },
-        //     messages: {
-        //         uname: {
-        //             required: '用户名不能为空',
-        //             remote: '用户名已存在',
-        //         },
-        //         upwd: {
-        //             required: '密码不能为空',
-        //         },
-        //     }
-        // });
     })
     var pop;
+
     function up(fname, type) {
         pop = new Popup({
             contentType: 1,
@@ -168,6 +191,7 @@
         pop.build();
         pop.show();
     }
+
     function popupClose() {
         pop.close();
     }

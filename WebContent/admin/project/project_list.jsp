@@ -37,7 +37,7 @@
 					<div class="pull-left">
 						<div class="form-group qinfo">
 							<label>名称：</label>
-							<input name="uname"  class="form-control">
+							<input name="name"  class="form-control">
 						</div>
 					 
 						<button type="submit" class="btn btn-default">查询</button>
@@ -49,7 +49,9 @@
 						<table class="table table-striped table-hover table-bordered" style="text-align: center;">
 							<thead>
 								<tr>
+									<td>大赛名称</td>
 									<td>名称</td>
+									<td>编号</td>
 									<td>简介</td>
 									<td>详情</td>
 									<td>举办时间</td>
@@ -61,7 +63,9 @@
 							<tbody>
 								<c:forEach items="${list}" var="info">
 									<tr>
+										<td>${info.competitionName}</td>
 										<td>${info.name}</td>
+										<td>${info.code}</td>
 										<td >${info.content}</td>
 										<td >${info.info}</td>
 										<td>${info.holdTime}</td>

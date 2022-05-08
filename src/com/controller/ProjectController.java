@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.mapper.CompetitionMapper;
+import com.model.Competition;
 import com.model.Project;
 import com.service.ProjectService;
 import com.util.PageBean;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +25,8 @@ public class ProjectController {
 	 */
 	@Autowired
 	private ProjectService projectService;
+	@Autowired
+	private CompetitionMapper competitionMapper;
 
 	/**
 	 * 项目列表
@@ -42,6 +48,8 @@ public class ProjectController {
 		}
 		PageBean page = new PageBean(offset);
 		Project project = new Project();
+		String name = request.getParameter("name");
+		project.setName(name);
 		// 查询记录总数
 		counts = projectService.getCount(project);
 		// 获取当前页记录
@@ -65,6 +73,9 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/project_toAdd")
 	public String toAdd(HttpServletRequest request) throws Exception {
+		Map<String, Object> inputParam=new HashMap<>();
+		List<Map> competitionList = competitionMapper.query(inputParam);
+		request.getSession().setAttribute("competitionList", competitionList);
 		return "/admin/project/project_add.jsp";
 	}
 
@@ -77,7 +88,30 @@ public class ProjectController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/project_add")
-	public String add(Project project, HttpServletRequest request) throws Exception {
+	public String add(HttpServletRequest request) throws Exception {
+
+		String name = request.getParameter("name");
+		String holdTime = request.getParameter("holdTime");
+		String holdAddress = request.getParameter("holdAddress");
+		Integer competitionId = Integer.valueOf(request.getParameter("competitionId"));
+		String content = request.getParameter("content");
+		String code = request.getParameter("code");
+		String info = request.getParameter("info");
+		String url = request.getParameter("url");
+		// 更新数据库
+		Project project = new Project();
+		project.setContent(content);
+		project.setHoldAddress(holdAddress);
+		project.setHoldTime(new SimpleDateFormat("yyyy-MM-dd").parse(holdTime));
+		project.setName(name);
+		project.setCode(code);
+		project.setInfo(info);
+		project.setUrl(url);
+		project.setCompetitionId(competitionId);
+
+
+
+
 		// 保存到数据库
 		projectService.insertProject(project);
 		return "redirect:project_list.action";
@@ -95,21 +129,47 @@ public class ProjectController {
 		int id = Integer.parseInt(request.getParameter("id"));
 		// 根据ID查询出需要更新的记录
 		List<Map> project = projectService.queryProjectById(id);
-		request.setAttribute("project", project);
+		request.setAttribute("holdTime", new SimpleDateFormat("yyyy-MM-dd").format(project.get(0).get("holdTime")));
+		Map<String, Object> inputParam=new HashMap<>();
+		List<Map> competitionList = competitionMapper.query(inputParam);
+		request.getSession().setAttribute("competitionList", competitionList);
+		request.setAttribute("project", project.get(0));
 		return "/admin/project/project_update.jsp";
 	}
 
 	/**
 	 * 更新项目
 	 * 
-	 * @param project
+	 * @param
 	 * @param request
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/project_update")
-	public String update(Project project, HttpServletRequest request)
+	public String update( HttpServletRequest request)
 			throws Exception {
+
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String holdTime = request.getParameter("holdTime");
+		String holdAddress = request.getParameter("holdAddress");
+		Integer competitionId = Integer.valueOf(request.getParameter("competitionId"));
+		String content = request.getParameter("content");
+		String code = request.getParameter("code");
+		String info = request.getParameter("info");
+		String url = request.getParameter("url");
+		// 更新数据库
+		Project project = new Project();
+		project.setId(id);
+		project.setContent(content);
+		project.setHoldAddress(holdAddress);
+		project.setHoldTime(new SimpleDateFormat("yyyy-MM-dd").parse(holdTime));
+		project.setName(name);
+		project.setCode(code);
+		project.setInfo(info);
+		project.setUrl(url);
+		project.setCompetitionId(competitionId);
+
 		// 更新数据库
 		projectService.updateProject(project);
 		return "redirect:project_list.action";

@@ -7,13 +7,20 @@ public class Project {
    private String name;
    private Date holdTime;
    private String holdAddress;
-   private Integer info;
+   private String info;
    private String content;
    private String url;
    private Integer competitionId;
+   private String code;
 
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Integer getId() {
         return id;
@@ -55,11 +62,12 @@ public class Project {
         this.content = content;
     }
 
-    public Integer getInfo() {
+
+    public String getInfo() {
         return info;
     }
 
-    public void setInfo(Integer info) {
+    public void setInfo(String info) {
         this.info = info;
     }
 

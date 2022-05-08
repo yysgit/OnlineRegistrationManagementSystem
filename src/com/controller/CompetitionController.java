@@ -45,6 +45,8 @@ public class CompetitionController {
         }
         PageBean page = new PageBean(offset);
         Competition competition = new Competition();
+        String name = request.getParameter("name");
+        competition.setName(name);
         // 查询记录总数
         counts = competitionService.getCount(competition);
         // 获取当前页记录
@@ -74,7 +76,7 @@ public class CompetitionController {
     /**
      * 保存新增大赛
      *
-     * @param competition
+     * @param
      * @param request
      * @return
      * @throws Exception
@@ -88,12 +90,14 @@ public class CompetitionController {
         String holdAddress = request.getParameter("holdAddress");
         String type = request.getParameter("type");
         String content = request.getParameter("content");
+        String code = request.getParameter("code");
         // 更新数据库
         Competition competition = new Competition();
         competition.setContent(content);
         competition.setHoldAddress(holdAddress);
         competition.setHoldTime(new SimpleDateFormat("yyyy-MM-dd").parse(holdTime));
         competition.setName(name);
+        competition.setCode(code);
         if("1".equals(type)){
             competition.setType(1);
         }else{
@@ -125,7 +129,7 @@ public class CompetitionController {
     /**
      * 更新大赛
      *
-     * @param competition
+     * @param
      * @param request
      * @return
      * @throws Exception
@@ -140,12 +144,14 @@ public class CompetitionController {
         String holdAddress = request.getParameter("holdAddress");
         String type = request.getParameter("type");
         String content = request.getParameter("content");
+        String code = request.getParameter("code");
         // 更新数据库
         Competition competition = new Competition();
         competition.setId(Integer.valueOf(id));
         competition.setContent(content);
         competition.setHoldAddress(holdAddress);
         competition.setName(name);
+        competition.setCode(code);
         if("1".equals(type)){
             competition.setType(1);
         }else{

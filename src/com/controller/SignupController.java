@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.mapper.SchoolMapper;
+import com.model.Boss;
 import com.model.Signup;
 import com.model.User;
 import com.service.SchoolService;
@@ -87,6 +88,25 @@ public class SignupController {
         request.setAttribute("projectId",projectId);
         return "/web/signup.jsp";
     }
+
+//    /**
+//     * 跳转到新增报名界面
+//     *
+//     * @param request
+//     * @return
+//     * @throws Exception
+//     */
+//    @RequestMapping(value = "/signup_toListPage")
+//    public String signup_toListPage(HttpServletRequest request) throws Exception {
+//        String projectId= request.getParameter("projectId");
+//        Boss boss=(Boss) request.getSession().getAttribute("boss");
+//        request.setAttribute("schoolList", signupService.querySignupAllList(null));
+//        request.setAttribute("projectId",projectId);
+//        return "/web/signup.jsp";
+//    }
+
+
+
 
     /**
      * 保存新增报名

@@ -103,7 +103,7 @@
 												<a href="<%=path%>/boss_toUpdate.action?id=${info.id}"
 													class="btn btn-info btn-xs"><span
 													class="glyphicon glyphicon-edit"></span>编辑</a>
-												<a href="javascript:void();"
+												<a href="javascript:;"
 													onclick="delInfo('${info.id}');"
 													class="btn btn-danger btn-xs"><span
 													class="glyphicon glyphicon-trash"></span>删除</a>

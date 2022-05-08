@@ -24,46 +24,68 @@
         <div class="panel-heading">修改</div>
         <div class="panel-body">
 
-            <form action="<%=path%>/project_add.action" method="post" id="addForm">
-                <input name="id" type="hidden" value="${competition.id}"/>
+            <form action="<%=path%>/project_update.action" method="post" id="addForm">
+                <input name="id" type="hidden" value="${project.id}"/>
                 <%--                开始--%>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>名称:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>大赛:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control add_name" name="name" value="${competition.name}">
+                            <select name="competitionId" class="form-control add_competitionId">
+                                <c:forEach items="${competitionList}" var="competition">
+                                    <option value="${competition.id}"  <c:if test="${project.competitionId == competition.id}">selected</c:if>  > ${competition.name} </option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row rowmargin col-sm-7">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>名称:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control add_name" name="name" value="${project.name}">
                         </div>
                     </div>
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>简介:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>编号:</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control add_content" rows="6" name="content" value="${competition.content}"></textarea>
+                            <input type="text" class="form-control add_code" name="code" value="${project.code}">
                         </div>
                     </div>
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>详情:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>简介:</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control add_info" rows="6" name="info" value="${competition.info}"></textarea>
+                            <textarea class="form-control add_content" rows="6" name="content" >${project.content}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>举办时间:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>详情:</label>
                         <div class="col-sm-8">
-                            <input type="date" class="form-control add_hold_time" value="" name="holdTime" value="${competition.holdTime}" placeholder="请选择时间">
+                            <textarea class="form-control add_info" rows="6" name="info" >${project.info}</textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row rowmargin col-sm-7">
                     <div class="form-group">
-                        <label  class="col-sm-3 col-lg-2 control-label"><span class="red">*</span>举办地点:</label>
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>举办时间:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control add_hold_address" name="holdAddress" value="${competition.holdAddress}" >
+                            <input type="date" class="form-control add_hold_time" value="${holdTime}" name="holdTime"
+                                   placeholder="请选择时间">
+                        </div>
+                    </div>
+                </div>
+                <div class="row rowmargin col-sm-7">
+                    <div class="form-group">
+                        <label class="col-sm-3 col-lg-2 control-label"><font color="red">*</font>举办地点:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control add_hold_address" name="holdAddress" value="${project.holdAddress}">
                         </div>
                     </div>
                 </div>
@@ -74,15 +96,15 @@
                         </label>
                         <div class="col-sm-9 form-inline">
                             <input id="tupian" readonly="readonly" name="url"
-                                   value="${competition.url}"
-                                   size="35"  class="form-control add_url"
-                                   type="text" tip="请上传文件" />
-                            <input type="button" value="上传" onclick="up('tupian',0)" />
+                                   size="35" class="form-control add_url" value="${project.url}"
+                                   type="text" tip="请上传文件"/>
+                            <input type="button" value="上传" onclick="up('tupian',0)"/>
                         </div>
                     </div>
                 </div>
 
-                <%--                结束--%>
+
+            <%--                结束--%>
 
                 <div class="row  col-sm-7" style="text-align: center;">
                     <button type="submit" class="btn btn-primary modalSave" style="margin-top: 40px;">提交</button>
@@ -108,13 +130,19 @@
 
             // $("#exampleModal").modal("hide");
             let _obj = {};
+            _obj.competitionId = $(".add_competitionId").val(); //名称
             _obj.name = $(".add_name").val(); //名称
             _obj.add_content = $('.add_content').val()//简介
             _obj.add_info = $(".add_info").val(); //详情
             _obj.add_hold_time = $(".add_hold_time").val(); //举办时间
             _obj.add_hold_address = $(".add_hold_address").val(); //举办地点
             _obj.add_url = $(".add_url").val(); //图片路径
+            _obj.code = $(".add_code").val(); //图片路径
 
+            if (_obj.competitionId == "") {
+                alert("请选择大赛");
+                return false;
+            }
             if (_obj.name=="") {
                 alert("请填写名称");return false;
             }
@@ -132,6 +160,10 @@
             }
             if (_obj.add_url=="") {
                 alert("请选择图片地址");return false;
+            }
+            if (_obj.code == "") {
+                alert("请填写编号");
+                return false;
             }
 
             $("#addForm").submit();

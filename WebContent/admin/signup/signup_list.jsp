@@ -44,9 +44,9 @@
 									<td>大赛项目</td>
 									<td>程序中文名</td>
 									<td>程序英文名</td>
-									<td>参数人数</td>
-									<td>参数账号</td>
-									<td>参数队伍</td>
+									<td>参赛人数</td>
+									<td>参赛账号</td>
+									<td>参赛队伍</td>
 									<td>联系方式</td>
 									<td>队长名称</td>
 									<td>指导老师</td>
@@ -89,9 +89,9 @@
 							</tbody>
 						</table>
 						<div class="panel-footer clearfix">
-							<div class="pull-left">
-								<button type="button" id="addBtn" class="btn btn-info">新增</button>
-							</div>
+<%--							<div class="pull-left">--%>
+<%--								<button type="button" id="addBtn" class="btn btn-info">新增</button>--%>
+<%--							</div>--%>
 							<nav class="pull-right"> <pg:index>
 								<jsp:include page="/common/pagination_tag.jsp" flush="true" />
 							</pg:index> </nav>

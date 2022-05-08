@@ -39,6 +39,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row rowmargin">
+                    <div class="col-sm-7">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                <font color="red">*</font>
+                                编号
+                            </label>
+                            <div class="col-sm-9 form-inline">
+                                <input id="code" name="code" size="35" class="form-control"
+                                       type="text" value="" tip="请输入编号"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row rowmargin">
                     <div class="col-sm-7">
@@ -73,7 +87,10 @@
                 <div class="row rowmargin">
                     <div class="col-sm-7">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">类型 </label>
+                            <label class="col-sm-3 control-label">
+                                <font color="red">*</font>
+                                描述
+                            </label>
                             <div class="col-sm-9 form-inline">
                                 <select name="type" class="form-control">
                                     <option value="0"> 只面向大学生</option>
@@ -126,17 +143,48 @@
                 form.submit();
             },
             rules: {
+                name: {
+                    required: true,
 
+                },
+                code: {
+                    required: true,
+                },
+
+                holdTime: {
+                    required: true,
+                },
+                holdAddress: {
+                    required: true,
+                },
+                type: {
+                    required: true,
+                },
+                content: {
+                    required: true,
+                },
             },
             messages: {
-                uname: {
-                    required: '用户名不能为空',
-                    remote: '用户名已存在',
+                name: {
+                    required: '标题名称不能为空',
+
                 },
-                upwd: {
-                upwd: {
-                    required: '密码不能为空',
+                code: {
+                    required: '编号不能为空',
                 },
+                holdTime: {
+                    required: '举办时间不能为空',
+                },
+                holdAddress: {
+                    required: '举办地点不能为空',
+                },
+                type: {
+                    required: '类型不能为空',
+                },
+                content: {
+                    required: '描述不能为空',
+                },
+
             }
         });
     });

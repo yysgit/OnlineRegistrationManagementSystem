@@ -19,26 +19,27 @@
 </head>
 <body>
 	<div class="page-content">
-		<form action="<%=path%>/tadmin_list.action" class="form-inline" method="post">
+		<form action="<%=path%>/competition_list.action" class="form-inline" method="post">
 			<div class="panel panel-default">
 				<div class="panel-heading">管理员信息列表</div>
 				<div class="panel-body">
 					<div class="pull-left">
 						<div class="form-group qinfo">
 							<label>大赛名称：</label>
-							<input name="uname"  class="form-control">
+							<input name="name"  class="form-control">
 						</div>
 					 
 						<button type="submit" class="btn btn-default">查询</button>
 					</div>
 				</div>
-				<pg:pager url="tadmin_list.action" items="${itemSize}" maxPageItems="${pageItem}" maxIndexPages="${pageItem}" isOffset="${true}" export="offset,currentPageNumber=pageNumber" scope="request">
+				<pg:pager url="competition_list.action" items="${itemSize}" maxPageItems="${pageItem}" maxIndexPages="${pageItem}" isOffset="${true}" export="offset,currentPageNumber=pageNumber" scope="request">
 
 					<div class="table-responsive">
 						<table class="table table-striped table-hover" style="text-align: center;">
 							<thead>
 								<tr>
 									<td>标题名称</td>
+									<td>编号</td>
 									<td>举办时间</td>
 									<td>举办地点</td>
 									<td>类型</td>
@@ -50,6 +51,7 @@
 								<c:forEach items="${list}" var="info">
 									<tr>
 										<td>${info.name}</td>
+										<td>${info.code}</td>
 										<td>${info.holdTime}</td>
 										<td>${info.holdAddress}</td>
 										<td>${info.type==0?"只面向大学生":"其他"}</td>

@@ -55,6 +55,7 @@ public class CompetitionServiceImpl implements CompetitionService {
 		if (page != null) {
 			PageBean.setPageMap(map, page);
 		}
+		map.put("name",competition.getName());
 		return map;
 	}
 

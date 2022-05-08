@@ -62,6 +62,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if (page != null) {
 			PageBean.setPageMap(map, page);
 		}
+		map.put("name",project.getName());
 		return map;
 	}
 

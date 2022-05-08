@@ -1,44 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.SignupMapper">
 
-	<select id="query" parameterType="java.util.Map" resultType="java.util.Map">
-		select id,project_id as projectId ,school_id as schoolId,create_user_id as createUserId,ranks,captain,instructor,contestants  from db_signup
-		<if test="page">
-			limit  ${offset}, ${pageSize}
-        </if>
-	</select>
-	<select id="getCount" parameterType="java.util.Map" resultType="Int">
-		select count(0) from db_signup
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select dbs.id
+             ,dbs.project_id as projectId
+             ,dbs.school_id as schoolId
+             ,dbs.create_user_id as createUserId
+             ,dbs.ranks
+             ,dbs.captain
+             ,dbs.instructor
+             ,dbs.contestants
+             ,dbs.people_num as  peopleNum
+             ,dbs.phone_num as phoneNum
+             ,dbs.program_name as programName
+             ,dbs.program_eng_name as programEngName
+             ,dbs.company
+             ,dbs.participating_account as participatingAccount
+             ,tu.name as createUserName
+             ,dbp.name as projectName
+             ,dbsc.name as schoolName
+        from db_signup dbs
+        left join tuser tu on tu.id=dbs.create_user_id
+        left join db_project dbp on dbp.id=dbs.project_id
+        left join db_school dbsc on dbsc.id=dbs.school_id
 
-	</select>
-	<select id="querySignupById" parameterType="int" resultType="Signup">
-		select id,project_id as projectId ,school_id as schoolId,create_user_id as createUserId,ranks,captain,instructor,contestants from db_signup where id=${value}
-	</select>
-	<insert id="insertSignup" useGeneratedKeys="true" keyProperty="id"
-		parameterType="Signup">
-		insert into db_signup
-		(project_id,school_id,create_user_id,ranks,captain,instructor,contestants,people_num,program_name,
-program_eng_name,participating_account,phone_num,company)
-		values
-		(#{projectId},#{schoolId},#{createUserId},#{ranks},#{captain},#{instructor},#{contestants},
-		 #{peopleNum},#{programName},#{programEngName},#{participatingAccount},#{phoneNum},#{company});
-	</insert>
-	<update id="updateSignup" parameterType="Signup">
-		update db_signup set
-							 project_id=#{projectId},
-							 school_id=#{schoolId},
-							 create_user_id=#{createUserId},
-							 ranks=#{ranks},
-							 captain=#{captain},
-							 instructor=#{instructor},
-			contestants=#{contestants}
-		where
-		id=#{id}	
-	</update>
-	<delete id="deleteSignup" parameterType="int">
-		delete from db_signup where id=#{id}
-	</delete>
+
+        <if test="page">
+            limit ${offset}, ${pageSize}
+        </if>
+    </select>
+    <select id="getCount" parameterType="java.util.Map" resultType="Int">
+        select count(0)
+        from db_signup
+
+    </select>
+    <select id="querySignupById" parameterType="int" resultType="Signup">
+        select id,
+               project_id     as projectId,
+               school_id      as schoolId,
+               create_user_id as createUserId,
+               ranks,
+               captain,
+               instructor,
+               contestants
+        from db_signup
+        where id = ${value}
+    </select>
+    <insert id="insertSignup" useGeneratedKeys="true" keyProperty="id"
+            parameterType="Signup">
+        insert into db_signup
+        (project_id, school_id, create_user_id, ranks, captain, instructor, contestants, people_num, program_name,
+         program_eng_name, participating_account, phone_num, company)
+        values (#{projectId}, #{schoolId}, #{createUserId}, #{ranks}, #{captain}, #{instructor}, #{contestants},
+                #{peopleNum}, #{programName}, #{programEngName}, #{participatingAccount}, #{phoneNum}, #{company});
+    </insert>
+    <update id="updateSignup" parameterType="Signup">
+        update db_signup
+        set project_id=#{projectId},
+            school_id=#{schoolId},
+            create_user_id=#{createUserId},
+            ranks=#{ranks},
+            captain=#{captain},
+            instructor=#{instructor},
+            contestants=#{contestants}
+        where id = #{id}
+    </update>
+    <delete id="deleteSignup" parameterType="int">
+        delete
+        from db_signup
+        where id = #{id}
+    </delete>
 </mapper>
  

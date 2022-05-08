@@ -9,6 +9,7 @@ public class Competition {
    private String holdAddress;
    private Integer type;
    private String content;
+   private String code;
 
     public Integer getId() {
         return id;
@@ -56,5 +57,13 @@ public class Competition {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
