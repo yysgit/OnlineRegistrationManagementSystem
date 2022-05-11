@@ -35,8 +35,17 @@ public class Boss {
 	 * 电话
 	 */
 	private String tel;
-	
-	
+
+	private Integer schoolId;
+
+
+	public Integer getSchoolId() {
+		return schoolId;
+	}
+
+	public void setSchoolId(Integer schoolId) {
+		this.schoolId = schoolId;
+	}
 
 	public Integer getId() {
 		return this.id;

@@ -65,7 +65,7 @@
                                     大学
                                 </label>
                                 <div class="col-sm-9 form-inline">
-                                    <select id="fid" name="fid" class="form-control">
+                                    <select id="schoolId" name="schoolId" class="form-control">
                                         <c:forEach items="${schoolList}" var="school">
                                             <option value="${school.id}"> ${school.name} </option>
                                         </c:forEach>
@@ -155,6 +155,9 @@
                 name: {
                     required: true,
                 },
+                schoolId: {
+                    required: true,
+                },
 
             },
             messages: {
@@ -169,7 +172,9 @@
                 name: {
                     required: '姓名能为空',
                 },
-
+                schoolId: {
+                    required: '学校不能为空',
+                },
             }
         });
     });

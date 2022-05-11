@@ -49,6 +49,8 @@ public interface SignupService {
 	 */
 	public int updateSignup(Signup signup) throws Exception;
 
+	public int updateSignupByStatus(Signup signup) throws Exception;
+
 	/**
 	 * 根据ID查询记录
 	 * 

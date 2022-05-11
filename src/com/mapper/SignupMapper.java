@@ -47,6 +47,8 @@ public interface SignupMapper {
 	 */
 	public int updateSignup(Signup signup);
 
+	public int updateSignupByStatus(Signup signup);
+
 	/**
 	 * 根据ID查询记录
 	 * 

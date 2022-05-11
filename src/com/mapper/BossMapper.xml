@@ -20,10 +20,24 @@
 	</sql>
 	<select id="query" parameterType="java.util.Map" resultType="Boss">
 		<if test="page">
-		select * from boss
+		select id,
+			uname,
+			upwd,
+			name,
+			sex,
+			zhiwei,
+			tel,
+			school_id as schoolId from boss
 		</if>
 		<if test="!page">
-		select * from   boss  
+		select id,
+			uname,
+			upwd,
+			name,
+			sex,
+			zhiwei,
+			tel,
+			school_id AS schoolId from   boss
 		</if>
 		
 		<include refid="Where_Clause" />
@@ -41,9 +55,9 @@
 	<insert id="insertBoss" useGeneratedKeys="true" keyProperty="id"
 		parameterType="Boss">
 		insert into boss
-		(uname,upwd,name,sex,zhiwei,tel)
+		(uname,upwd,name,sex,zhiwei,tel,school_id)
 		values
-		(#{uname},#{upwd},#{name},#{sex},#{zhiwei},#{tel});
+		(#{uname},#{upwd},#{name},#{sex},#{zhiwei},#{tel},#{schoolId});
 	</insert>
 	<update id="updateBoss" parameterType="Boss">
 		update boss set

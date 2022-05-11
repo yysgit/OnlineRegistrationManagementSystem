@@ -49,7 +49,23 @@ public class SignupController {
         } catch (Exception e) {
         }
         PageBean page = new PageBean(offset);
+
+
         Signup signup = new Signup();
+
+
+        Boss boss = (Boss) request.getSession().getAttribute("boss");
+
+
+        if(boss!=null){
+            signup.setSchoolId(boss.getSchoolId());
+        }
+
+        User user = (User) request.getSession().getAttribute("user");
+        if(user!=null){
+            signup.setCreateUserId(user.getId());
+        }
+
         // 查询记录总数
         counts = signupService.getCount(signup);
         // 获取当前页记录
@@ -74,6 +90,20 @@ public class SignupController {
     @RequestMapping(value = "/signup_toAdd")
     public String toAdd(HttpServletRequest request) throws Exception {
         return "/admin/signup/signup_add.jsp";
+    }
+
+    /**
+     * 学校审核
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/signup_school_audit")
+    public String signup_school_audit( Signup signup, HttpServletRequest request) throws Exception {
+        signup.setStatus(1);
+        signupService.updateSignupByStatus(signup);
+        return "redirect:signup_list.action";
     }
 
     /**
