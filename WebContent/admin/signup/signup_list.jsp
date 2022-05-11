@@ -30,6 +30,7 @@
 						</div>
 					 
 						<button type="submit" class="btn btn-default">查询</button>
+						<button  class="btn btn-default">付费</button>
 					</div>
 				</div>
 				<pg:pager url="tadmin_list.action" items="${itemSize}" maxPageItems="${pageItem}" maxIndexPages="${pageItem}" isOffset="${true}" export="offset,currentPageNumber=pageNumber" scope="request">
@@ -74,10 +75,10 @@
 										<td>${info.company}</td>
 										<td>${info.createUserName}</td>
 										<td>
-											<a href="<%=path%>/signup_toUpdate.action?id=${info.id}"
+											<a href="javascript:;"
 											   class="btn btn-info btn-xs">
 												<span class="glyphicon glyphicon-edit"></span>
-												编辑
+												审核通过
 											</a>
 											<a href="javascript:;" onclick="delInfo('${info.id}')" class="btn btn-danger btn-xs">
 												<span class="glyphicon glyphicon-trash"></span>

@@ -54,4 +54,6 @@ public interface SignupMapper {
 	 * @return
 	 */
 	public Signup querySignupById(int id);
+	@MapKey("id")
+	public Map querySignupByProjectId(int id);
 }

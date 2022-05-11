@@ -56,4 +56,5 @@ public interface SignupService {
 	 * @return
 	 */
 	public Signup querySignupById(int id) throws Exception;
+	public Map querySignupByProjectId(int id) throws Exception;
 }

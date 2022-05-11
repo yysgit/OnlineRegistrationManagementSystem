@@ -97,4 +97,9 @@ public class SignupServiceImpl implements SignupService {
 	public Signup querySignupById(int id) throws Exception {
 		return competitionMapper.querySignupById(id);
 	}
+
+	@Override
+	public Map querySignupByProjectId(int id) throws Exception {
+		return competitionMapper.querySignupByProjectId(id);
+	}
 }

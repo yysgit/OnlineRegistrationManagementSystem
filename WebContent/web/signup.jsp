@@ -98,8 +98,8 @@
                             </label>
                             <div class="u-select">
                                 <input type="text" class="u-select-selected"
-                                       name="participatingAccount" id="participatingAccount" maxlength="20"
-                                       placeholder="参赛账号"/>
+                                       name="participatingAccount" id="participatingAccount" maxlength="20" value="${participatingAccount}"
+                                       placeholder="参赛账号" readonly/>
                             </div>
                         </div>
 

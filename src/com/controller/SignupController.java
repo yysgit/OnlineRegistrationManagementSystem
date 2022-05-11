@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * 报名Controller业务控制类
@@ -83,7 +85,12 @@ public class SignupController {
      */
     @RequestMapping(value = "/signup_toPage")
     public String signup_toPage(HttpServletRequest request) throws Exception {
-        String projectId= request.getParameter("projectId");
+        Integer projectId= Integer.valueOf(request.getParameter("projectId"));
+
+         Map map= signupService.querySignupByProjectId(projectId);
+
+        request.setAttribute("participatingAccount",  map.get("projectCode")+"-"+map.get("competitonCode")+"-"+new Random().nextInt(9999));
+
         request.setAttribute("schoolList", schoolMapper.query(null));
         request.setAttribute("projectId",projectId);
         return "/web/signup.jsp";
