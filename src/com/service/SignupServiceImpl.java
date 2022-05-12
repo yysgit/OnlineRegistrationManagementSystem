@@ -54,6 +54,8 @@ public class SignupServiceImpl implements SignupService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("schoolId", signup.getSchoolId());
 		map.put("createUserId", signup.getCreateUserId());
+		map.put("programName", signup.getProgramName());
+		map.put("status", signup.getStatus()+"");
 		if (page != null) {
 			PageBean.setPageMap(map, page);
 		}
@@ -80,7 +82,9 @@ public class SignupServiceImpl implements SignupService {
 		return signupMapper.deleteSignup(id);
 	}
 
-
+	public int updateSignupByPay(Signup signup) throws Exception {
+		return signupMapper.updateSignupByPay(signup);
+	}
 
 	public int updateSignupByStatus(Signup signup) throws Exception {
 		return signupMapper.updateSignupByStatus(signup);
@@ -106,7 +110,7 @@ public class SignupServiceImpl implements SignupService {
 	}
 
 	@Override
-	public Map querySignupByProjectId(int id) throws Exception {
+	public List<Map> querySignupByProjectId(int id) throws Exception {
 		return signupMapper.querySignupByProjectId(id);
 	}
 }

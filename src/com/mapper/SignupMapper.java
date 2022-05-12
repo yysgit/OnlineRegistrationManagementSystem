@@ -49,6 +49,8 @@ public interface SignupMapper {
 
 	public int updateSignupByStatus(Signup signup);
 
+	public int updateSignupByPay(Signup signup);
+
 	/**
 	 * 根据ID查询记录
 	 * 
@@ -56,6 +58,8 @@ public interface SignupMapper {
 	 * @return
 	 */
 	public Signup querySignupById(int id);
+
+
 	@MapKey("id")
-	public Map querySignupByProjectId(int id);
+	public List<Map> querySignupByProjectId(int id);
 }

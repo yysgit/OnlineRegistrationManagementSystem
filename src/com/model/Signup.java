@@ -19,7 +19,15 @@ public class Signup {
     private String phoneNum;
     private String company;
     private Integer status;
+    private String url;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public Integer getStatus() {
         return status;

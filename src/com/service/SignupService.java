@@ -50,6 +50,7 @@ public interface SignupService {
 	public int updateSignup(Signup signup) throws Exception;
 
 	public int updateSignupByStatus(Signup signup) throws Exception;
+	public int updateSignupByPay(Signup signup) throws Exception;
 
 	/**
 	 * 根据ID查询记录
@@ -58,5 +59,5 @@ public interface SignupService {
 	 * @return
 	 */
 	public Signup querySignupById(int id) throws Exception;
-	public Map querySignupByProjectId(int id) throws Exception;
+	public List<Map> querySignupByProjectId(int id) throws Exception;
 }

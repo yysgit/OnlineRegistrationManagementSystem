@@ -3,6 +3,7 @@ package com.controller;
 import com.mapper.SchoolMapper;
 import com.model.Boss;
 import com.model.Signup;
+import com.model.Tadmin;
 import com.model.User;
 import com.service.SchoolService;
 import com.service.SignupService;
@@ -50,9 +51,9 @@ public class SignupController {
         }
         PageBean page = new PageBean(offset);
 
-
+        String programName =String.valueOf(request.getParameter("programName"));
         Signup signup = new Signup();
-
+        signup.setProgramName(programName);
 
         Boss boss = (Boss) request.getSession().getAttribute("boss");
 
@@ -60,6 +61,16 @@ public class SignupController {
         if(boss!=null){
             signup.setSchoolId(boss.getSchoolId());
         }
+
+
+        Tadmin admin = (Tadmin) request.getSession().getAttribute("cuser");
+
+
+        if(admin!=null){
+            signup.setStatus(2);
+        }
+
+
 
         User user = (User) request.getSession().getAttribute("user");
         if(user!=null){
@@ -100,11 +111,43 @@ public class SignupController {
      * @throws Exception
      */
     @RequestMapping(value = "/signup_school_audit")
-    public String signup_school_audit( Signup signup, HttpServletRequest request) throws Exception {
-        signup.setStatus(1);
+    public String signup_school_audit( Signup signup, HttpServletRequest request,int statusOld) throws Exception {
+
+
+
+        Boss boss = (Boss) request.getSession().getAttribute("boss");
+        if(boss!=null){
+            if(statusOld==1){
+                signup.setStatus(0);
+            }
+        }else{
+            signup.setStatus(3);
+        }
+
         signupService.updateSignupByStatus(signup);
         return "redirect:signup_list.action";
     }
+
+    /**
+     * 学校审核
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/signup_school_pay")
+    public String signup_school_pay( Signup signup, HttpServletRequest request) throws Exception {
+        signup.setStatus(2);
+        Boss boss = (Boss) request.getSession().getAttribute("boss");
+        if(boss!=null){
+            signup.setSchoolId(boss.getSchoolId());
+        }
+
+        signupService.updateSignupByPay(signup);
+        return "redirect:signup_list.action";
+    }
+
+
 
     /**
      * 跳转到新增报名界面
@@ -117,9 +160,9 @@ public class SignupController {
     public String signup_toPage(HttpServletRequest request) throws Exception {
         Integer projectId= Integer.valueOf(request.getParameter("projectId"));
 
-         Map map= signupService.querySignupByProjectId(projectId);
+         List<Map> map= signupService.querySignupByProjectId(projectId);
 
-        request.setAttribute("participatingAccount",  map.get("projectCode")+"-"+map.get("competitonCode")+"-"+new Random().nextInt(9999));
+        request.setAttribute("participatingAccount",  map.get(0).get("projectCode")+"-"+map.get(0).get("competitonCode")+"-"+new Random().nextInt(9999));
 
         request.setAttribute("schoolList", schoolMapper.query(null));
         request.setAttribute("projectId",projectId);
@@ -221,6 +264,7 @@ public class SignupController {
         String participatingAccount = request.getParameter("participatingAccount");
         String phoneNum = request.getParameter("phoneNum");
         String company = request.getParameter("company");
+        String url = request.getParameter("url");
 
 
         User userMy = (User) request.getSession().getAttribute("user");
@@ -241,6 +285,7 @@ public class SignupController {
         signup.setPhoneNum(phoneNum);
         signup.setCompany(company);
         signup.setCreateUserId(userMy.getId());
+        signup.setUrl(url);
 
 
         // 保存到数据库

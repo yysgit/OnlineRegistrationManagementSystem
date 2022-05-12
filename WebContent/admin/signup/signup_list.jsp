@@ -19,21 +19,25 @@
 </head>
 <body>
 <div class="page-content">
-    <form action="<%=path%>/tadmin_list.action" class="form-inline" method="post">
+    
+    <c:if test="${sessionScope.utype==1}"><button class="btn btn-success" onclick="payInfo()"  >付费</button></c:if>
+
+
+    <form action="<%=path%>/signup_list.action" class="form-inline" method="post">
         <div class="panel panel-default">
             <div class="panel-heading">大赛报名信息列表</div>
             <div class="panel-body">
                 <div class="pull-left">
                     <div class="form-group qinfo">
-                        <label>大赛名称：</label>
-                        <input name="uname" class="form-control">
+                        <label>程序中文名：</label>
+                        <input name="programName" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-default">查询</button>
-                    <button class="btn btn-default">付费</button>
+
                 </div>
             </div>
-            <pg:pager url="tadmin_list.action" items="${itemSize}" maxPageItems="${pageItem}"
+            <pg:pager url="signup_list.action" items="${itemSize}" maxPageItems="${pageItem}"
                       maxIndexPages="${pageItem}" isOffset="${true}" export="offset,currentPageNumber=pageNumber"
                       scope="request">
 
@@ -82,7 +86,8 @@
                                                                 info.status==3?'组委已审核':''
                                         }</td>
                                 <td>
-                                    <a href="javascript:;" onclick="auditInfo('${info.id}')"
+
+                                    <a href="javascript:;" onclick="auditInfo('${info.id}','${info.status}')"
                                        class="btn btn-info btn-xs">
                                         <span class="glyphicon glyphicon-edit"></span>
                                         审核通过
@@ -109,6 +114,7 @@
             </pg:pager>
         </div>
     </form>
+
 </div>
 </body>
 </html>
@@ -125,10 +131,17 @@
         }
     }
 
-    function auditInfo(id) {
+    function auditInfo(id,status) {
         if (confirm("是否确认审核？")) {
-            window.location.href = '<%=path%>/signup_school_audit.action?id=' + id;
+            window.location.href = '<%=path%>/signup_school_audit.action?id=' + id +"&statusOld="+status;
         }
     }
+    function payInfo(id) {
+        if (confirm("是否确认付费所有审核的报名？")) {
+            window.location.href = '<%=path%>/signup_school_pay.action';
+        }
+    }
+
+
 
 </script>

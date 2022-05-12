@@ -95,6 +95,10 @@
 						</div>
 						<div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="list-group list-group-self">
+								<a href="<%=path%>/boss_list.jsp.action" target="appiframe" class="list-group-item">
+									<span class="glyphicon glyphicon-menu-right"></span>
+									学校人员
+								</a>
 								<a href="<%=path%>/admin/boss/boss_info.jsp" target="appiframe" class="list-group-item">
 									<span class="glyphicon glyphicon-menu-right"></span>
 									个人信息

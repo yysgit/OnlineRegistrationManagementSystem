@@ -11,6 +11,7 @@
              ,dbs.ranks
              ,dbs.status
              ,dbs.captain
+             ,dbs.url
              ,dbs.instructor
              ,dbs.contestants
              ,dbs.people_num as  peopleNum
@@ -33,6 +34,14 @@
         <if test="createUserId!=null and createUserId!=''">
             and  dbs.create_user_id=#{createUserId}
         </if>
+        <if test="status!=null and status!='' and status!='null' " >
+            and  status in(2,3)
+        </if>
+
+        <if test="programName!=null and programName!='' and programName!='null'">
+            and program_name LIKE concat(concat('%',#{programName}),'%')
+        </if>
+
 
         <if test="page">
             limit ${offset}, ${pageSize}
@@ -44,10 +53,28 @@
         <if test="schoolId!=null and schoolId!=''">
             and  school_id=#{schoolId}
         </if>
+        <if test="status!=null and status!='' and status!='null' " >
+            and  status in(2,3)
+        </if>
         <if test="createUserId!=null and createUserId!=''">
             and  create_user_id=#{createUserId}
         </if>
+        <if test="programName!=null and programName!='' and programName!='null'">
+            and program_name LIKE concat(concat('%',#{programName}),'%')
+        </if>
     </select>
+
+
+    <select id="querySignupByProjectId" parameterType="int" resultType="java.util.Map">
+        select
+               dbp.code     as projectCode,
+               dbc.code      as competitonCode
+        from db_project dbp
+        left join  db_competition dbc  on dbc.id=dbp.competition_id
+        where dbp.id = ${value}
+    </select>
+
+
     <select id="querySignupById" parameterType="int" resultType="Signup">
         select id,
                project_id     as projectId,
@@ -57,7 +84,8 @@
                 status,
                captain,
                instructor,
-               contestants
+               contestants,
+               url
         from db_signup
         where id = ${value}
     </select>
@@ -65,9 +93,9 @@
             parameterType="Signup">
         insert into db_signup
         (project_id, school_id, create_user_id, ranks, captain, instructor, contestants, people_num, program_name,
-         program_eng_name, participating_account, phone_num, company)
+         program_eng_name, participating_account, phone_num, company,url)
         values (#{projectId}, #{schoolId}, #{createUserId}, #{ranks}, #{captain}, #{instructor}, #{contestants},
-                #{peopleNum}, #{programName}, #{programEngName}, #{participatingAccount}, #{phoneNum}, #{company});
+                #{peopleNum}, #{programName}, #{programEngName}, #{participatingAccount}, #{phoneNum}, #{company},#{url});
     </insert>
     <update id="updateSignup" parameterType="Signup">
         update db_signup
@@ -85,6 +113,11 @@
         update db_signup
         set status=#{status}
         where id = #{id}
+    </update>
+    <update id="updateSignupByPay" parameterType="Signup">
+        update db_signup
+        set status=#{status}
+        where school_id=#{schoolId} and status=1
     </update>
 
     <delete id="deleteSignup" parameterType="int">

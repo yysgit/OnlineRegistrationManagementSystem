@@ -98,7 +98,8 @@
                             </label>
                             <div class="u-select">
                                 <input type="text" class="u-select-selected"
-                                       name="participatingAccount" id="participatingAccount" maxlength="20" value="${participatingAccount}"
+                                       name="participatingAccount" id="participatingAccount" maxlength="20"
+                                       value="${participatingAccount}"
                                        placeholder="参赛账号" readonly/>
                             </div>
                         </div>
@@ -176,6 +177,20 @@
                                        name="company" id="company" maxlength="20" placeholder="单位(社会人士填写)"/>
                             </div>
                         </div>
+
+                        <div class="calculatorItem">
+                            <label class="itemTitle">
+                                附件：
+                            </label>
+                            <div class="u-select">
+                                <input id="tupian" readonly="readonly" name="url"
+                                       size="35" class="form-control add_url" value="${project.url}"
+                                       type="text" tip="请上传文件"/>
+                                <input type="button" value="上传" onclick="up('tupian',0)"/>
+                            </div>
+                        </div>
+
+
 
                         <div class="calculatorBtn">
                             <button type="submit">立即报名</button>
@@ -276,6 +291,24 @@
             }
         });
     });
+
+    var pop;
+    function up(fname, type) {
+        pop = new Popup({
+            contentType: 1,
+            isReloadOnClose: false,
+            width: 400,
+            height: 200
+        });
+        pop.setContent("contentUrl", "<%=path %>/upload/upload.jsp?fname=" + fname + "&pt=" + type);
+        pop.setContent("title", "文件上传");
+        pop.build();
+        pop.show();
+    }
+    function popupClose() {
+        pop.close();
+    }
+
 </script>
 
 

@@ -59,6 +59,8 @@ public class LoginController {
 			if (tadminList != null && tadminList.size() > 0) {
 				Tadmin admin = tadminList.get(0);
 				request.getSession().setAttribute("cuser", admin);
+				request.getSession().setAttribute("boss", null);
+				request.getSession().setAttribute("user", null);
 				flag = "true";
 			}
 		} else if (utype == 1) {
@@ -69,6 +71,8 @@ public class LoginController {
 			if (bossList != null && bossList.size() > 0) {
 				Boss boss = bossList.get(0);
 				request.getSession().setAttribute("boss", boss);
+				request.getSession().setAttribute("cuser", null);
+				request.getSession().setAttribute("user", null);
 				flag = "true";
 			}
 
@@ -122,6 +126,8 @@ public class LoginController {
 			if (userList != null && userList.size() > 0) {
 				User user = userList.get(0);
 				request.getSession().setAttribute("user", user);
+				request.getSession().setAttribute("boss", null);
+				request.getSession().setAttribute("cuser", null);
 				flag = "true";
 			}
 		} else {
