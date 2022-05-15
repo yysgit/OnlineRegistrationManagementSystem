@@ -140,6 +140,10 @@ public class SignupController {
         signup.setStatus(2);
         Boss boss = (Boss) request.getSession().getAttribute("boss");
         if(boss!=null){
+
+            
+
+
             signup.setSchoolId(boss.getSchoolId());
         }
 

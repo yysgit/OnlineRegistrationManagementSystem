@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<%=path%>/web/css/main.css"/>
 
 
+    <script type="text/javascript" src="<%=path %>/js/popup.js"></script>
+    <link href="<%=path%>/css/pdmcontent01.css" rel="stylesheet">
 </head>
 
 <body class="page-sign">
@@ -81,6 +83,18 @@
 
                             </div>
                         </div>
+                            <div class="calculatorItem">
+                                <label class="itemTitle">
+                                    附件：
+                                </label>
+                                <div class="u-select">
+                                    <input id="tupian" readonly="readonly" name="url"
+                                           size="35" class="form-control add_url" value=""
+                                           type="text" tip="请上传文件"/>
+                                    <input type="button" value="上传" onclick="up('tupian',0)"/>
+                                </div>
+                            </div>
+
                         <div class="calculatorItem">
                             <label class="itemTitle">
                                 竞赛人数：
@@ -175,18 +189,6 @@
                             <div class="u-select">
                                 <input type="text" class="u-select-selected"
                                        name="company" id="company" maxlength="20" placeholder="单位(社会人士填写)"/>
-                            </div>
-                        </div>
-
-                        <div class="calculatorItem">
-                            <label class="itemTitle">
-                                附件：
-                            </label>
-                            <div class="u-select">
-                                <input id="tupian" readonly="readonly" name="url"
-                                       size="35" class="form-control add_url" value="${project.url}"
-                                       type="text" tip="请上传文件"/>
-                                <input type="button" value="上传" onclick="up('tupian',0)"/>
                             </div>
                         </div>
 

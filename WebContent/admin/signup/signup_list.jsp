@@ -15,12 +15,19 @@
     <script language="javascript" type="text/javascript" src="<%=path%>/js/My97DatePicker/WdatePicker.js"></script>
     <script src="<%=path%>/css/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=path%>/js/jquery-pdm.js"></script>
+
+    <script language="javascript" type="text/javascript" src="<%=path%>/js/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="<%=path %>/js/popup.js"></script>
+    <link href="<%=path%>/css/pdmcontent01.css" rel="stylesheet">
+
     <title>大赛报名信息</title>
 </head>
 <body>
 <div class="page-content">
-    
-    <c:if test="${sessionScope.utype==1}"><button class="btn btn-success" onclick="payInfo()"  >付费</button></c:if>
+
+    <c:if test="${sessionScope.utype==1}">
+        <button class="btn btn-success" onclick="payInfo()">付费</button>
+    </c:if>
 
 
     <form action="<%=path%>/signup_list.action" class="form-inline" method="post">
@@ -79,6 +86,14 @@
                                 <td>${info.schoolName}</td>
                                 <td>${info.company}</td>
                                 <td>${info.createUserName}</td>
+                                <c:if test="${info.url ==null || info.url ==''}">
+                                <td><a href="${info.url}"> 暂无附件 </a>
+                                    </c:if>
+                                    <c:if test="${info.url !=null && info.url !=''}">
+                                <td><a href="${info.url}"> 下载附件 </a>
+                                    </c:if>
+
+                                </td>
                                 <td>${
                                         info.status==0?'未审核':
                                                 info.status==1?'学校已审核':
@@ -131,17 +146,17 @@
         }
     }
 
-    function auditInfo(id,status) {
+    function auditInfo(id, status) {
         if (confirm("是否确认审核？")) {
-            window.location.href = '<%=path%>/signup_school_audit.action?id=' + id +"&statusOld="+status;
+            window.location.href = '<%=path%>/signup_school_audit.action?id=' + id + "&statusOld=" + status;
         }
     }
+
     function payInfo(id) {
         if (confirm("是否确认付费所有审核的报名？")) {
             window.location.href = '<%=path%>/signup_school_pay.action';
         }
     }
-
 
 
 </script>
